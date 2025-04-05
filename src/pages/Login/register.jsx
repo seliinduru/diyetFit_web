@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Sayfa yönlendirme
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../Config/FirebaseConfig"; // Firebase config dosyanıza göre doğru yolu verin
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -10,9 +13,33 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);  // Şifrenizi tekrar girin state'i
   const navigate = useNavigate(); // Yönlendirme fonksiyonu
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Kayıt olundu:", { fullName, email, password, confirmPassword });
+    
+    // Şifre ve onay şifresinin eşleşip eşleşmediğini kontrol et
+    if (password !== confirmPassword) {
+      alert("Şifreler eşleşmiyor!");
+      return;
+    }
+
+    try {
+      // Firebase Authentication ile kullanıcı kaydı
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Firestore'a kullanıcı bilgilerini ekleme
+      await setDoc(doc(db, "users", user.uid), {
+        fullName: fullName,
+        email: email,
+        uid: user.uid,
+      });
+
+      console.log("Kullanıcı başarıyla kaydedildi:", { fullName, email });
+      navigate("/login"); // Kayıt işlemi başarılı olursa, giriş sayfasına yönlendirme
+    } catch (error) {
+      console.error("Hata oluştu:", error);
+      alert(error.message);
+    }
   };
 
   // Stiller (CSS)

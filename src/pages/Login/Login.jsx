@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Sayfa yönlendirmek için
+import { useNavigate } from "react-router-dom"; // Sayfa yönlendirme
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Config/FirebaseConfig"; // Firebase Authentication'ı import et
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Şifreyi göstermek için state
   const [rememberMe, setRememberMe] = useState(false); // Beni hatırla checkbox'ı
+  const [error, setError] = useState(""); // Hata mesajı için state
   const navigate = useNavigate(); // Yönlendirme fonksiyonu
 
   useEffect(() => {
@@ -22,17 +25,32 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Giriş yapıldı:", { email, password });
+    setError(""); // Formu göndermeden önce hata mesajını temizle
 
-    if (rememberMe) {
-      // Beni hatırla seçili ise, email ve şifreyi localStorage'a kaydet
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-    } else {
-      // Eğer "Beni hatırla" seçili değilse, localStorage'dan bilgileri sil
-      localStorage.removeItem("email");
-      localStorage.removeItem("password");
-    }
+    // Firebase Authentication ile giriş işlemi
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Giriş başarılı olduğunda
+        const user = userCredential.user;
+        console.log("Giriş başarılı:", user);
+
+        if (rememberMe) {
+          // Beni hatırla seçili ise, email ve şifreyi localStorage'a kaydet
+          localStorage.setItem("email", email);
+          localStorage.setItem("password", password);
+        } else {
+          // Eğer "Beni hatırla" seçili değilse, localStorage'dan bilgileri sil
+          localStorage.removeItem("email");
+          localStorage.removeItem("password");
+        }
+
+        // Başarılı giriş sonrası anasayfaya yönlendir
+        navigate("/home"); // Giriş başarılı olduğunda yönlendirme yapılacak sayfa
+      })
+      .catch((error) => {
+        // Hata durumunda hata mesajını göster
+        setError(error.message);
+      });
   };
 
   // Stiller (CSS)
@@ -141,6 +159,10 @@ const Login = () => {
     backButtonHover: {
       transform: "scale(1.1)", // Hover efekti ile biraz büyüsün
     },
+    errorMessage: {
+      color: "red",
+      marginBottom: "15px",
+    },
   };
 
   return (
@@ -157,6 +179,10 @@ const Login = () => {
         </button>
 
         <h2 style={styles.title}>Giriş Yap</h2>
+
+        {/* Hata mesajı */}
+        {error && <div style={styles.errorMessage}>{error}</div>}
+
         <form onSubmit={handleSubmit}>
           <div style={styles.inputGroup}>
             <input
@@ -231,6 +257,12 @@ const Login = () => {
               (e.target.style.textDecoration = styles.linkHover.textDecoration)
             }
             onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+            onClick={(e) => {
+              e.preventDefault(); // Sayfanın yenilenmesini engeller
+              navigate("/forget_password"); // Şifremi unuttum linkine tıklanınca forget_password sayfasına yönlendirme
+            }}
+            
+            
           >
             Şifremi unuttum
           </a>
