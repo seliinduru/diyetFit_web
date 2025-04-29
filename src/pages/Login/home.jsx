@@ -20,7 +20,7 @@ const Home = () => {
           <nav>
             <ul style={styles.navLinks}>
               <li>
-                <button onClick={() => navigate("/create-diet")} style={styles.navButton}>
+                <button onClick={() => navigate("/create_diet")} style={styles.navButton}>
                   Diyet Oluştur
                 </button>
               </li>
