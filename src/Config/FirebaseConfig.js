@@ -18,7 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
+const auth = getAuth(app); // Firebase Authentication'ı başlat
 const analytics = getAnalytics(app);
 
 // Export auth ve sendPasswordResetEmail fonksiyonunu dışa aktar

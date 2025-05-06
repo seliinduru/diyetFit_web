@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Login/register";
 import ForgetPassword from "./pages/Login/forget_password";
 import DietQuestions from "./pages/Login/create_diet"; // <-- BUNU EKLEDİM!
+import MainPage from "./pages/Login/main_page";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/forget_password" element={<ForgetPassword />} />
         <Route path="/create_diet" element={<DietQuestions />} />
+        <Route path="/main_page" element={<MainPage />} />
       </Routes>
     </Router>
   );
