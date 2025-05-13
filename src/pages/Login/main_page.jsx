@@ -7,6 +7,32 @@ const MainPage = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showTips, setShowTips] = useState(false);
+  const [activeTip, setActiveTip] = useState(0);
+
+  // Diet tips for the new section
+  const dietTips = [
+    {
+      title: "Dengeli Beslenme",
+      content: "Her öğünde protein, karbonhidrat ve sağlıklı yağları dengeli şekilde tüketin.",
+      icon: "🍽️"
+    },
+    {
+      title: "Su İçmeyi Unutmayın",
+      content: "Günde en az 2-2.5 litre su içmek metabolizmanızı hızlandırır ve toksinlerin atılmasına yardımcı olur.",
+      icon: "💧"
+    },
+    {
+      title: "Porsiyon Kontrolü",
+      content: "Yediğiniz miktarı kontrol etmek, kalori alımınızı dengelemenin en etkili yollarından biridir.",
+      icon: "⚖️"
+    },
+    {
+      title: "Düzenli Egzersiz",
+      content: "Haftada en az 3-4 kez 30 dakikalık egzersiz yaparak metabolizmanızı aktif tutun.",
+      icon: "🏃‍♀️"
+    }
+  ];
 
   useEffect(() => {
     // Set isLoaded to true after a short delay to trigger animations
@@ -19,11 +45,17 @@ const MainPage = () => {
       setCurrentDate(new Date());
     }, 60000);
 
+    // Auto-rotate tips
+    const tipInterval = setInterval(() => {
+      setActiveTip((prev) => (prev + 1) % dietTips.length);
+    }, 5000);
+
     return () => {
       clearTimeout(timer);
       clearInterval(dateInterval);
+      clearInterval(tipInterval);
     };
-  }, []);
+  }, [dietTips.length]);
 
   const formatDate = (date) => {
     const options = {
@@ -84,6 +116,10 @@ const MainPage = () => {
 
   const handleCreateDiet = () => {
     navigate("/create_diet");
+  };
+
+  const toggleTips = () => {
+    setShowTips(!showTips);
   };
 
   return (
@@ -229,12 +265,12 @@ const MainPage = () => {
           </div>
         )}
 
-        {/* Welcome Section - Replacing the image section */}
+        {/* Welcome Section - Enhanced with animations */}
         <section style={styles.welcomeSection}>
           <div style={styles.welcomeContainer} className="welcome-container">
             <div style={styles.welcomeContent}>
-              <div style={styles.imageContainer}>
-                <img src="/main.png" alt="Main" style={styles.mainImage} />
+              <div style={styles.imageContainer} className="image-container">
+                <img src="/main.png" alt="Main" style={styles.mainImage} className="main-image" />
               </div>
               <div style={styles.textContainer}>
                 <h1 style={styles.welcomeTitle}>
@@ -253,7 +289,7 @@ const MainPage = () => {
                 <button
                   onClick={handleCreateDiet}
                   style={styles.createDietButton}
-                  className="action-button"
+                  className="action-button pulse-animation"
                 >
                   <span style={styles.buttonEmoji}>🚀</span> Diyet Oluştur{" "}
                   <span style={styles.buttonEmoji}>🚀</span>
@@ -261,6 +297,53 @@ const MainPage = () => {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* NEW SECTION: Daily Diet Tips */}
+        <section style={styles.dietTipsSection}>
+          <h2 style={styles.dietTipsTitle} className="section-title">
+            Günlük Beslenme İpuçları
+          </h2>
+          <button 
+            onClick={toggleTips} 
+            style={styles.tipsToggleButton}
+            className="tips-toggle-button"
+          >
+            {showTips ? "İpuçlarını Gizle" : "İpuçlarını Göster"}
+          </button>
+          
+          {showTips && (
+            <div style={styles.tipsContainer} className="tips-container">
+              <div style={styles.tipsCarousel}>
+                {dietTips.map((tip, index) => (
+                  <div 
+                    key={index} 
+                    style={{
+                      ...styles.tipCard,
+                      ...(index === activeTip ? styles.activeTip : styles.inactiveTip)
+                    }}
+                    className={`tip-card ${index === activeTip ? 'active-tip' : ''}`}
+                  >
+                    <div style={styles.tipIcon}>{tip.icon}</div>
+                    <h3 style={styles.tipTitle}>{tip.title}</h3>
+                    <p style={styles.tipContent}>{tip.content}</p>
+                  </div>
+                ))}
+              </div>
+              <div style={styles.tipIndicators}>
+                {dietTips.map((_, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      ...styles.tipDot,
+                      ...(index === activeTip ? styles.activeTipDot : {})
+                    }}
+                    onClick={() => setActiveTip(index)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </section>
 
         {/* NASIL ÇALIŞIR BÖLÜMÜ */}
@@ -293,7 +376,7 @@ const MainPage = () => {
               <div style={styles.stepIcon}>🥗</div>
               <h3 style={styles.stepTitle}>Diyet Planı Oluşturun</h3>
               <p style={styles.stepDescription}>
-                Sizin için oluşturulan kişiselleştirilmiş diyet planını
+              Sizin için oluşturulan kişiselleştirilmiş diyet planını
                 inceleyin.
               </p>
             </div>
@@ -345,7 +428,6 @@ const MainPage = () => {
                   </li>
                 </ul>
               </div>
-
               <div style={styles.footerColumn}>
                 <h3 style={styles.footerHeading}>Hizmetlerimiz</h3>
                 <ul style={styles.footerList}>
@@ -373,7 +455,6 @@ const MainPage = () => {
                   </li>
                 </ul>
               </div>
-
               <div style={styles.footerColumn}>
                 <h3 style={styles.footerHeading}>Kurumsal</h3>
                 <ul style={styles.footerList}>
@@ -400,7 +481,6 @@ const MainPage = () => {
                   </li>
                 </ul>
               </div>
-
               <div style={styles.footerColumn}>
                 <h3 style={styles.footerHeading}>İletişim</h3>
                 <ul style={styles.footerList}>
@@ -439,7 +519,6 @@ const MainPage = () => {
                 </ul>
               </div>
             </div>
-
             <div style={styles.footerBottom}>
               <p style={styles.footerText}>
                 © 2025 DiyetFit. Tüm hakları saklıdır.
@@ -497,6 +576,11 @@ const MainPage = () => {
           /* Welcome container animation */
           .welcome-container {
             animation: fadeIn 1s ease-out;
+          }
+          
+          /* Main image animation */
+          .main-image {
+            animation: float 6s ease-in-out infinite;
           }
           
           /* Section title animation */
@@ -564,6 +648,35 @@ const MainPage = () => {
             animation: ripple 1s ease-out;
           }
           
+          /* Pulse animation for create diet button */
+          .pulse-animation {
+            animation: pulse 2s infinite;
+          }
+          
+          /* Tips toggle button animation */
+          .tips-toggle-button {
+            transition: all 0.3s ease;
+          }
+          
+          .tips-toggle-button:hover {
+            background-color: #2E7D32 !important;
+            transform: scale(1.05);
+          }
+          
+          /* Tips container animation */
+          .tips-container {
+            animation: fadeIn 0.5s ease-out;
+          }
+          
+          /* Tip card animations */
+          .tip-card {
+            transition: all 0.5s ease;
+          }
+          
+          .tip-card.active-tip {
+            animation: fadeInScale 0.5s ease-out;
+          }
+          
           /* Modal animation */
           @keyframes modalFadeIn {
             from {
@@ -591,6 +704,17 @@ const MainPage = () => {
           @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+          }
+          
+          @keyframes fadeInScale {
+            from { 
+              opacity: 0;
+              transform: scale(0.9);
+            }
+            to { 
+              opacity: 1;
+              transform: scale(1);
+            }
           }
           
           @keyframes slideInRight {
@@ -622,7 +746,30 @@ const MainPage = () => {
               opacity: 0;
               transform: scale(40, 40);
             }
-              
+          }
+          
+          @keyframes float {
+            0% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+            100% {
+              transform: translateY(0px);
+            }
+          }
+          
+          @keyframes pulse {
+            0% {
+              box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+            70% {
+              box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+            }
+            100% {
+              box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
           }
           
           /* Footer link hover effects */
@@ -861,30 +1008,9 @@ const styles = {
   activeDot: {
     backgroundColor: "#4CAF50",
   },
-
-  welcomeContent: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "20px",
-  },
-  mainImage: {
-    width: "220px",
-    height: "auto",
-    borderRadius: "0",
-    boxShadow: "none",
-    marginBottom: "0", // Margin'i tamamen kaldırdım
-  },
-  
-
-  welcomeTextContainer: {
-    flex: "1",
-    textAlign: "left",
-  },
-
-  // Welcome section - replacing the image section
+  // Enhanced welcome section styles
   welcomeSection: {
-    padding: "40px 20px", // Üst ve alt padding'i azalttım
+    padding: "40px 20px",
     backgroundColor: "#f2f2f2",
     textAlign: "center",
     display: "flex",
@@ -892,14 +1018,33 @@ const styles = {
     alignItems: "center",
   },
   welcomeContainer: {
-    maxWidth: "1000px", // Genişliği artırdım
+    maxWidth: "1000px",
     backgroundColor: "white",
-    padding: "30px 50px", // Üst ve alt padding'i azalttım
+    padding: "30px 50px",
     borderRadius: "15px",
     boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
     width: "150%",
   },
-
+  welcomeContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px",
+  },
+  imageContainer: {
+    position: "relative",
+    marginBottom: "10px",
+  },
+  mainImage: {
+    width: "220px",
+    height: "auto",
+    borderRadius: "0",
+    boxShadow: "none",
+  },
+  textContainer: {
+    flex: "1",
+    textAlign: "center",
+  },
   welcomeTitle: {
     fontSize: "42px",
     fontWeight: "bold",
@@ -922,6 +1067,7 @@ const styles = {
     marginBottom: "0px",
     textAlign: "center",
   },
+  // Enhanced create diet button
   createDietButton: {
     padding: "15px 40px",
     backgroundColor: "#388E3C",
@@ -951,7 +1097,98 @@ const styles = {
     fontSize: "18px",
     margin: "0 5px",
   },
-
+  
+  // NEW SECTION: Diet Tips styles
+  dietTipsSection: {
+    padding: "60px 20px",
+    backgroundColor: "#f0f7f0",
+    textAlign: "center",
+  },
+  dietTipsTitle: {
+    fontSize: "36px",
+    fontWeight: "bold",
+    color: "#388E3C",
+    marginBottom: "30px",
+    position: "relative",
+    display: "inline-block",
+  },
+  tipsToggleButton: {
+    backgroundColor: "#4CAF50",
+    color: "white",
+    border: "none",
+    padding: "12px 25px",
+    borderRadius: "25px",
+    fontSize: "16px",
+    fontWeight: "600",
+    cursor: "pointer",
+    marginBottom: "30px",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+  },
+  tipsContainer: {
+    maxWidth: "900px",
+    margin: "0 auto",
+  },
+  tipsCarousel: {
+    display: "flex",
+    justifyContent: "center",
+    position: "relative",
+    height: "250px",
+    marginBottom: "20px",
+  },
+  tipCard: {
+    backgroundColor: "white",
+    padding: "30px",
+    borderRadius: "12px",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
+    width: "100%",
+    maxWidth: "600px",
+    position: "absolute",
+    transition: "all 0.5s ease",
+  },
+  activeTip: {
+    opacity: 1,
+    transform: "scale(1) translateX(0)",
+    zIndex: 2,
+  },
+  inactiveTip: {
+    opacity: 0,
+    transform: "scale(0.8) translateX(50px)",
+    zIndex: 1,
+  },
+  tipIcon: {
+    fontSize: "40px",
+    marginBottom: "15px",
+  },
+  tipTitle: {
+    fontSize: "24px",
+    fontWeight: "600",
+    color: "#388E3C",
+    marginBottom: "15px",
+  },
+  tipContent: {
+    fontSize: "16px",
+    lineHeight: "1.6",
+    color: "#555",
+  },
+  tipIndicators: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    marginTop: "20px",
+  },
+  tipDot: {
+    width: "12px",
+    height: "12px",
+    borderRadius: "50%",
+    backgroundColor: "#ddd",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+  },
+  activeTipDot: {
+    backgroundColor: "#4CAF50",
+    transform: "scale(1.2)",
+  },
+  
   // Nasıl Çalışır bölümü için stil tanımlamaları
   howItWorks: {
     padding: "80px 20px",
@@ -1019,7 +1256,6 @@ const styles = {
     color: "#555",
     lineHeight: "1.6",
   },
-
   footer: {
     backgroundColor: "#333333",
     color: "#ffffff",
@@ -1071,20 +1307,21 @@ const styles = {
   },
   socialLinks: {
     display: "flex",
-    gap: "15px",
-    marginTop: "20px",
+    flexWrap: "wrap",
+    gap: "10px",
+    marginTop: "15px",
   },
   socialLink: {
-    color: "#ffffff",
-    textDecoration: "none",
     backgroundColor: "#4CAF50",
+    color: "white",
     padding: "8px 12px",
     borderRadius: "5px",
+    textDecoration: "none",
     fontSize: "14px",
     transition: "background-color 0.3s",
   },
   footerBottom: {
-    borderTop: "1px solid #444",
+    borderTop: "1px solid #444444",
     paddingTop: "20px",
     display: "flex",
     flexWrap: "wrap",
@@ -1092,11 +1329,13 @@ const styles = {
     alignItems: "center",
   },
   footerText: {
-    fontSize: "14px",
     margin: "0",
+    fontSize: "14px",
+    color: "#aaaaaa",
   },
   footerLegal: {
     display: "flex",
+    flexWrap: "wrap",
     gap: "20px",
   },
   footerLegalLink: {
@@ -1108,3 +1347,8 @@ const styles = {
 };
 
 export default MainPage;
+
+
+    
+
+               
