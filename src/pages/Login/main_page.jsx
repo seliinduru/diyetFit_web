@@ -14,24 +14,28 @@ const MainPage = () => {
   const dietTips = [
     {
       title: "Dengeli Beslenme",
-      content: "Her öğünde protein, karbonhidrat ve sağlıklı yağları dengeli şekilde tüketin.",
-      icon: "🍽️"
+      content:
+        "Her öğünde protein, karbonhidrat ve sağlıklı yağları dengeli şekilde tüketin.",
+      icon: "🍽️",
     },
     {
       title: "Su İçmeyi Unutmayın",
-      content: "Günde en az 2-2.5 litre su içmek metabolizmanızı hızlandırır ve toksinlerin atılmasına yardımcı olur.",
-      icon: "💧"
+      content:
+        "Günde en az 2-2.5 litre su içmek metabolizmanızı hızlandırır ve toksinlerin atılmasına yardımcı olur.",
+      icon: "💧",
     },
     {
       title: "Porsiyon Kontrolü",
-      content: "Yediğiniz miktarı kontrol etmek, kalori alımınızı dengelemenin en etkili yollarından biridir.",
-      icon: "⚖️"
+      content:
+        "Yediğiniz miktarı kontrol etmek, kalori alımınızı dengelemenin en etkili yollarından biridir.",
+      icon: "⚖️",
     },
     {
       title: "Düzenli Egzersiz",
-      content: "Haftada en az 3-4 kez 30 dakikalık egzersiz yaparak metabolizmanızı aktif tutun.",
-      icon: "🏃‍♀️"
-    }
+      content:
+        "Haftada en az 3-4 kez 30 dakikalık egzersiz yaparak metabolizmanızı aktif tutun.",
+      icon: "🏃‍♀️",
+    },
   ];
 
   useEffect(() => {
@@ -152,15 +156,15 @@ const MainPage = () => {
               </li>
               <li>
                 <button
-                  onClick={() => navigate("/calorie-calculator")}
+                  onClick={() => navigate("/kac_kalori")}
                   style={styles.navButton}
                 >
-                  <span style={styles.navIcon}>🔢</span> Kalori Hesapla
+                  <span style={styles.navIcon}>🔢</span> Kaç Kalori
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => navigate("/bki-calculator")}
+                  onClick={() => navigate("/vki")}
                   style={styles.navButton}
                 >
                   <span style={styles.navIcon}>📊</span> BKİ Hesapla
@@ -266,34 +270,23 @@ const MainPage = () => {
         )}
 
         {/* Welcome Section - Enhanced with animations */}
-        <section style={styles.welcomeSection}>
-          <div style={styles.welcomeContainer} className="welcome-container">
-            <div style={styles.welcomeContent}>
-              <div style={styles.imageContainer} className="image-container">
-                <img src="/main.png" alt="Main" style={styles.mainImage} className="main-image" />
+        <section class="welcome-section">
+          <div class="welcome-container">
+            <div class="welcome-content">
+              <div class="brand-element fade-in">
+                <div class="logo-shape">
+                  <span class="logo-text">🍀</span>
+                </div>
               </div>
-              <div style={styles.textContainer}>
-                <h1 style={styles.welcomeTitle}>
-                  <span style={styles.welcomeEmoji}>🌱</span> DiyetFit'e
-                  Hoşgeldiniz! <span style={styles.welcomeEmoji}>🌱</span>
-                </h1>
-                <p style={styles.welcomeText}>
+              <div class="text-content slide-up">
+                <h1 class="welcome-title">DiyetFit'e Hoşgeldiniz</h1>
+                <p class="welcome-description">
                   Sağlıklı yaşam yolculuğunuzda yanınızdayız. Kişiselleştirilmiş
                   diyet planları, kalori takibi ve sağlıklı tariflerle
                   hedeflerinize ulaşmanıza yardımcı oluyoruz.
                 </p>
-                <h2 style={styles.welcomeSubtitle}>
-                  <span style={styles.subtitleEmoji}>✨</span> Haydi Başlayalım!{" "}
-                  <span style={styles.subtitleEmoji}>✨</span>
-                </h2>
-                <button
-                  onClick={handleCreateDiet}
-                  style={styles.createDietButton}
-                  className="action-button pulse-animation"
-                >
-                  <span style={styles.buttonEmoji}>🚀</span> Diyet Oluştur{" "}
-                  <span style={styles.buttonEmoji}>🚀</span>
-                </button>
+                <h2 class="welcome-subtitle">Haydi Başlayalım</h2>
+                <button class="action-button">Diyet Oluştur</button>
               </div>
             </div>
           </div>
@@ -304,25 +297,29 @@ const MainPage = () => {
           <h2 style={styles.dietTipsTitle} className="section-title">
             Günlük Beslenme İpuçları
           </h2>
-          <button 
-            onClick={toggleTips} 
+          <button
+            onClick={toggleTips}
             style={styles.tipsToggleButton}
             className="tips-toggle-button"
           >
             {showTips ? "İpuçlarını Gizle" : "İpuçlarını Göster"}
           </button>
-          
+
           {showTips && (
             <div style={styles.tipsContainer} className="tips-container">
               <div style={styles.tipsCarousel}>
                 {dietTips.map((tip, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     style={{
                       ...styles.tipCard,
-                      ...(index === activeTip ? styles.activeTip : styles.inactiveTip)
+                      ...(index === activeTip
+                        ? styles.activeTip
+                        : styles.inactiveTip),
                     }}
-                    className={`tip-card ${index === activeTip ? 'active-tip' : ''}`}
+                    className={`tip-card ${
+                      index === activeTip ? "active-tip" : ""
+                    }`}
                   >
                     <div style={styles.tipIcon}>{tip.icon}</div>
                     <h3 style={styles.tipTitle}>{tip.title}</h3>
@@ -336,7 +333,7 @@ const MainPage = () => {
                     key={index}
                     style={{
                       ...styles.tipDot,
-                      ...(index === activeTip ? styles.activeTipDot : {})
+                      ...(index === activeTip ? styles.activeTipDot : {}),
                     }}
                     onClick={() => setActiveTip(index)}
                   />
@@ -376,7 +373,7 @@ const MainPage = () => {
               <div style={styles.stepIcon}>🥗</div>
               <h3 style={styles.stepTitle}>Diyet Planı Oluşturun</h3>
               <p style={styles.stepDescription}>
-              Sizin için oluşturulan kişiselleştirilmiş diyet planını
+                Sizin için oluşturulan kişiselleştirilmiş diyet planını
                 inceleyin.
               </p>
             </div>
@@ -542,250 +539,428 @@ const MainPage = () => {
       {/* CSS for hover effects and animations */}
       <style>
         {`
-          /* Circle button animations and effects */
-          .circle-button {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            opacity: 0;
-            transform: scale(0.8) translateY(20px);
-          }
+    /* Circle button animations and effects */
+    .circle-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+    }
           
-          .circle-button.loaded {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            animation: fadeInUp 0.6s forwards;
-          }
+    .circle-button.loaded {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      animation: fadeInUp 0.6s forwards;
+    }
           
-          .circle-button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            background-color: #388E3C;
-          }
+    .circle-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      background-color: #388E3C;
+    }
           
-          /* Apply different animation delays to each circle */
-          .circle-button:nth-child(1) { animation-delay: 0.1s; }
-          .circle-button:nth-child(2) { animation-delay: 0.2s; }
-          .circle-button:nth-child(3) { animation-delay: 0.3s; }
-          .circle-button:nth-child(4) { animation-delay: 0.4s; }
-          .circle-button:nth-child(5) { animation-delay: 0.5s; }
+    /* Apply different animation delays to each circle */
+    .circle-button:nth-child(1) { animation-delay: 0.1s; }
+    .circle-button:nth-child(2) { animation-delay: 0.2s; }
+    .circle-button:nth-child(3) { animation-delay: 0.3s; }
+    .circle-button:nth-child(4) { animation-delay: 0.4s; }
+    .circle-button:nth-child(5) { animation-delay: 0.5s; }
           
-          /* Date widget animation */
-          .date-widget {
-            animation: slideInRight 0.5s ease-out forwards;
-          }
+    /* Date widget animation */
+    .date-widget {
+      animation: slideInRight 0.5s ease-out forwards;
+    }
           
-          /* Welcome container animation */
-          .welcome-container {
-            animation: fadeIn 1s ease-out;
-          }
+    /* Welcome container animation */
+    .welcome-container {
+      animation: fadeIn 1s ease-out;
+    }
           
-          /* Main image animation */
-          .main-image {
-            animation: float 6s ease-in-out infinite;
-          }
+    /* Welcome section styles */
+    .welcome-section {
+      padding: 40px 20px;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .welcome-container {
+      max-width: 1000px;
+      background-color: white;
+      padding: 50px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .welcome-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .brand-element {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .logo-shape {
+      width: 120px;
+      height: 120px;
+     background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 20px rgba(46, 125, 50, 0.25);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    .logo-shape:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 12px 25px rgba(46, 125, 50, 0.35);
+    }
+    
+    .logo-text {
+      font-size: 48px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -1px;
+    }
+    
+    .text-content {
+      flex: 1;
+      text-align: center;
+      animation: slideUp 0.8s ease-out;
+    }
+    
+    .welcome-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #2e7d32;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .welcome-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #2e7d32;
+      border-radius: 3px;
+    }
+    
+    .welcome-description {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #555;
+      margin: 25px 0 20px;
+      text-align: center;
+    }
+    
+    .welcome-subtitle {
+      font-size: 24px;
+      font-weight: 600;
+      color: #2e7d32;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .action-button {
+      padding: 14px 36px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
           
-          /* Section title animation */
-          .section-title {
-            position: relative;
-          }
+    /* Section title animation */
+    .section-title {
+      position: relative;
+    }
           
-          .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background-color: #4CAF50;
-            animation: lineExpand 1s ease-out forwards 0.5s;
-          }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background-color: #4CAF50;
+      animation: lineExpand 1s ease-out forwards 0.5s;
+    }
           
-          /* Step card animations */
-          .step-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.8s ease-out forwards;
-          }
+    /* Step card animations */
+    .step-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
           
-          .step-card:nth-child(1) { animation-delay: 0.1s; }
-          .step-card:nth-child(2) { animation-delay: 0.3s; }
-          .step-card:nth-child(3) { animation-delay: 0.5s; }
-          .step-card:nth-child(4) { animation-delay: 0.7s; }
+    .step-card:nth-child(1) { animation-delay: 0.1s; }
+    .step-card:nth-child(2) { animation-delay: 0.3s; }
+    .step-card:nth-child(3) { animation-delay: 0.5s; }
+    .step-card:nth-child(4) { animation-delay: 0.7s; }
           
-          .step-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-          }
+    .step-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
           
-          /* Action button effects */
-          .action-button {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-          }
+    /* Action button effects */
+    .action-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
           
-          .action-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            background-color: #2E7D32 !important;
-            color: white !important;
-          }
+    .action-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #1b5e20 !important;
+      color: white !important;
+    }
           
-          .action-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-          }
+    .action-button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
           
-          .action-button:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-          }
+    .action-button:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
           
-          /* Pulse animation for create diet button */
-          .pulse-animation {
-            animation: pulse 2s infinite;
-          }
+    /* Pulse animation for create diet button */
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
           
-          /* Tips toggle button animation */
-          .tips-toggle-button {
-            transition: all 0.3s ease;
-          }
+    /* Tips toggle button animation */
+    .tips-toggle-button {
+      transition: all 0.3s ease;
+    }
           
-          .tips-toggle-button:hover {
-            background-color: #2E7D32 !important;
-            transform: scale(1.05);
-          }
+    .tips-toggle-button:hover {
+      background-color: #2E7D32 !important;
+      transform: scale(1.05);
+    }
           
-          /* Tips container animation */
-          .tips-container {
-            animation: fadeIn 0.5s ease-out;
-          }
+    /* Tips container animation */
+    .tips-container {
+      animation: fadeIn 0.5s ease-out;
+    }
           
-          /* Tip card animations */
-          .tip-card {
-            transition: all 0.5s ease;
-          }
+    /* Tip card animations */
+    .tip-card {
+      transition: all 0.5s ease;
+    }
           
-          .tip-card.active-tip {
-            animation: fadeInScale 0.5s ease-out;
-          }
+    .tip-card.active-tip {
+      animation: fadeInScale 0.5s ease-out;
+    }
           
-          /* Modal animation */
-          @keyframes modalFadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(-20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
+    /* Modal animation */
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Mobile Responsiveness for welcome section */
+    @media (min-width: 768px) {
+      .welcome-content {
+        flex-direction: row;
+      }
+      
+      .text-content {
+        text-align: left;
+        padding-left: 40px;
+      }
+      
+      .welcome-title, .welcome-subtitle, .welcome-description {
+        text-align: left;
+      }
+      
+      .welcome-title:after {
+        left: 0;
+        transform: none;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .welcome-container {
+        padding: 30px 20px;
+      }
+      
+      .logo-shape {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .logo-text {
+        font-size: 40px;
+      }
+      
+      .welcome-title {
+        font-size: 28px;
+      }
+      
+      .welcome-subtitle {
+        font-size: 20px;
+      }
+      
+      .welcome-description {
+        font-size: 16px;
+      }
+      
+      .action-button {
+        padding: 12px 30px;
+        width: 100%;
+        max-width: 250px;
+      }
+    }
           
-          /* Animations */
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
           
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
           
-          @keyframes fadeInScale {
-            from { 
-              opacity: 0;
-              transform: scale(0.9);
-            }
-            to { 
-              opacity: 1;
-              transform: scale(1);
-            }
-          }
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
           
-          @keyframes slideInRight {
-            from {
-              opacity: 0;
-              transform: translateX(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
           
-          @keyframes lineExpand {
-            from { width: 0; }
-            to { width: 80px; }
-          }
+    @keyframes lineExpand {
+      from { width: 0; }
+      to { width: 80px; }
+    }
           
-          @keyframes ripple {
-            0% {
-              transform: scale(0, 0);
-              opacity: 0.5;
-            }
-            20% {
-              transform: scale(25, 25);
-              opacity: 0.5;
-            }
-            100% {
-              opacity: 0;
-              transform: scale(40, 40);
-            }
-          }
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      20% {
+        transform: scale(25, 25);
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(40, 40);
+      }
+    }
           
-          @keyframes float {
-            0% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-10px);
-            }
-            100% {
-              transform: translateY(0px);
-            }
-          }
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
           
-          @keyframes pulse {
-            0% {
-              box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
-            }
-            70% {
-              box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
-            }
-            100% {
-              box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
-            }
-          }
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+      }
+    }
           
-          /* Footer link hover effects */
-          ${styles.footerLink}:hover {
-            color: #4CAF50;
-            transform: translateX(5px);
-          }
+    /* Footer link hover effects */
+    ${styles.footerLink}:hover {
+      color: #4CAF50;
+      transform: translateX(5px);
+    }
           
-          ${styles.socialLink}:hover {
-            background-color: #2E7D32;
-          }
+    ${styles.socialLink}:hover {
+      background-color: #2E7D32;
+    }
           
-          ${styles.footerLegalLink}:hover {
-            color: #4CAF50;
-          }
-        `}
+    ${styles.footerLegalLink}:hover {
+      color: #4CAF50;
+    }
+  `}
       </style>
     </div>
   );
@@ -1097,7 +1272,7 @@ const styles = {
     fontSize: "18px",
     margin: "0 5px",
   },
-  
+
   // NEW SECTION: Diet Tips styles
   dietTipsSection: {
     padding: "60px 20px",
@@ -1188,7 +1363,7 @@ const styles = {
     backgroundColor: "#4CAF50",
     transform: "scale(1.2)",
   },
-  
+
   // Nasıl Çalışır bölümü için stil tanımlamaları
   howItWorks: {
     padding: "80px 20px",
@@ -1347,8 +1522,3 @@ const styles = {
 };
 
 export default MainPage;
-
-
-    
-
-               

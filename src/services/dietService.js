@@ -124,15 +124,70 @@ export async function generateDietPlanStreaming(userAnswers, onChunk) {
 
 // Kullanıcı cevaplarını prompt formatına dönüştüren yardımcı fonksiyon
 function formatUserAnswersForPrompt(userAnswers) {
-    let prompt = "Aşağıdaki bilgilere göre 7 günlük detaylı bir diyet planı oluştur:\n\n";
+    // Önemli bilgileri bul
+    const mealPreference = userAnswers.find(a => a.question.includes("Günde kaç öğün"))?.answer.replace(/\s*[🍽️🍴🍱]+\s*/g, '') || "3 Ana Öğün";
+    const dietPreference = userAnswers.find(a => a.question.includes("beslenme tercihiniz"))?.answer.replace(/\s*[🥦🌱🍞🚫🥩🍗🍽️]+\s*/g, '') || "";
+    const dietPriority = userAnswers.find(a => a.question.includes("öncelik vermek"))?.answer.replace(/\s*[🍗🍞🚫🌾🧈🥗]+\s*/g, '') || "";
     
+    // Temel kullanıcı bilgilerini özet olarak ekle
+    let userInfo = "";
     userAnswers.forEach(answer => {
-        const question = answer.question.replace(/\s*[🧑‍🤝‍🧑👩👨🤷‍♂️🎂📏⚖️🛋️🚶‍♂️🏃‍♂️🏋️‍♂️➖➕💪🎯🥦🌱🍞🚫🥩🍗🍽️🍴🍱🌾🧈🥗🍎]+\s*/g, '');
-        const answerText = answer.answer.replace(/\s*[🧑‍🤝‍🧑👩👨🤷‍♂️🎂📏⚖️🛋️🚶‍♂️🏃‍♂️🏋️‍♂️➖➕💪🎯🥦🌱🍞🚫🥩🍗🍽️🍴🍱🌾🧈🥗🍎]+\s*/g, '');
-        prompt += `${question}: ${answerText}\n`;
+        if (answer.question.includes("Cinsiyetiniz") || 
+            answer.question.includes("Yaşınızı") || 
+            answer.question.includes("Boyunuz") || 
+            answer.question.includes("Kilonuz") || 
+            answer.question.includes("hareketliliğinizi") || 
+            answer.question.includes("Diyet amacınız") || 
+            answer.question.includes("Hedef kilonuz")) {
+            const question = answer.question.replace(/\s*[🧑‍🤝‍🧑👩👨🤷‍♂️🎂📏⚖️🛋️🚶‍♂️🏃‍♂️🏋️‍♂️➖➕💪🎯]+\s*/g, '');
+            const answerText = answer.answer.replace(/\s*[🧑‍🤝‍🧑👩👨🤷‍♂️🎂📏⚖️🛋️🚶‍♂️🏃‍♂️🏋️‍♂️➖➕💪🎯]+\s*/g, '');
+            userInfo += `${question}: ${answerText}. `;
+        }
     });
     
-    prompt += "\nLütfen bu bilgilere göre 7 günlük detaylı bir diyet planı oluştur. Her gün için kahvaltı, öğle yemeği, akşam yemeği ve ara öğünleri içermeli. Ayrıca günlük kalori ve makro besin hedeflerini de belirt.";
+    // Öğün yapısını belirle
+    let mealStructure = "";
+    if (mealPreference.includes("1 Ana")) {
+        mealStructure = "Ana Öğün";
+    } else if (mealPreference.includes("2 Ana Öğün")) {
+        mealStructure = "Sabah, Akşam";
+    } else if (mealPreference.includes("3 Ana Öğün")) {
+        mealStructure = "Kahvaltı, Öğle Yemeği, Akşam Yemeği";
+    } else if (mealPreference.includes("2 Ana + 1 Ara")) {
+        mealStructure = "Kahvaltı, Ara Öğün, Akşam Yemeği";
+    } else if (mealPreference.includes("3 Ana + 2 Ara")) {
+        mealStructure = "Kahvaltı, Kuşluk, Öğle Yemeği, İkindi, Akşam Yemeği";
+    } else if (mealPreference.includes("5-6 küçük")) {
+        mealStructure = "Sabah, Kuşluk, Öğle, İkindi, Akşam, Gece";
+    } else {
+        mealStructure = "Kahvaltı, Öğle Yemeği, Akşam Yemeği";
+    }
+    
+    // Ana prompt
+    let prompt = `Bir diyetisyen olarak, şu bilgilere sahip bir kişi için 7 günlük diyet planı oluşturmanı istiyorum: ${userInfo}\n\n`;
+    prompt += `Diyet planı şu özelliklere sahip olmalıdır:\n`;
+    prompt += `- Günde ${mealPreference} şeklinde beslenme\n`;
+    if (dietPreference) prompt += `- ${dietPreference} beslenme tarzı\n`;
+    if (dietPriority) prompt += `- ${dietPriority} öncelikli\n`;
+    prompt += `- Her öğün için gram cinsinden porsiyon miktarları\n`;
+    prompt += `- Her gün için toplam kalori ve makro besin değerleri\n\n`;
+    
+    prompt += `ÇOK ÖNEMLİ: Yanıtını aşağıdaki formatta yapılandır ve TÜM 7 GÜNÜ MUTLAKA TAMAMLA. Yanıtını kısaltma veya özet geçme. Her gün için ayrıntılı bilgi ver.\n\n`;
+    
+    // Her gün için numaralandırılmış başlıklar kullan
+    prompt += `# 1. GÜN\n`;
+    prompt += `# 2. GÜN\n`;
+    prompt += `# 3. GÜN\n`;
+    prompt += `# 4. GÜN\n`;
+    prompt += `# 5. GÜN\n`;
+    prompt += `# 6. GÜN\n`;
+    prompt += `# 7. GÜN\n\n`;
+    
+    prompt += `Her gün için şu öğünleri detaylandır: ${mealStructure}.\n\n`;
+    
+    prompt += `Şimdi lütfen yukarıdaki başlıkları sırayla doldur. Her gün için farklı yemekler öner. Tüm 7 günü tamamlayana kadar devam et. Yanıtını kısaltma, her gün için detaylı bilgi ver.\n\n`;
+    
+    prompt += `Başla:\n\n# 1. GÜN\n`;
     
     return prompt;
 }

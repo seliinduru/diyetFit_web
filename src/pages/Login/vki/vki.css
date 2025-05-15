@@ -1,0 +1,698 @@
+/* Temel Sıfırlama ve Değişkenler */
+:root {
+  --primary-color: #2ecc71; /* Yeşil */
+  --secondary-color: #f39c12; /* Turuncu */
+  --accent-color: #e67e22; /* Koyu Turuncu */
+  --danger-color: #e74c3c; /* Kırmızı */
+  --light-color: #ffffff; /* Beyaz */
+  --dark-color: #333333; /* Koyu Gri */
+  --text-color: #333333;
+  --border-radius: 12px;
+  --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  background-color: #ffffff; /* Beyaz arka plan */
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Konteynır ve Ana Düzen */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.main-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Responsive Düzen */
+@media (min-width: 768px) {
+  .app-layout {
+    flex-direction: row;
+  }
+  
+  .calculator-section,
+  .info-section {
+    flex: 1;
+  }
+  
+  .calculator-section {
+    margin-right: 15px;
+  }
+  
+  .info-section {
+    margin-left: 15px;
+  }
+}
+
+/* Kartlar */
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.calculator-card {
+  border-top: 4px solid var(--primary-color); /* Yeşil */
+}
+
+.info-card {
+  border-top: 4px solid var(--secondary-color); /* Turuncu */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: var(--primary-color);
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-card .card-title {
+  color: var(--secondary-color);
+}
+
+/* Form Elemanları */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.slider {
+  flex-grow: 1;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e0e0e0;
+  border-radius: 4px;
+  outline: none;
+  transition: var(--transition);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.slider:hover {
+  background: #d0d0d0;
+}
+
+.number-input {
+  width: 80px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.number-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+  outline: none;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.select-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 1rem;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.select-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+  outline: none;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
+}
+
+.button:hover {
+  background-color: #27ae60; /* Daha koyu yeşil */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(46, 204, 113, 0.3);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Sonuç Kartı */
+.result-card {
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.bmi-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 10px 0;
+  line-height: 1;
+}
+
+.bmi-category {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 5px 15px;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+.bmi-category.zayıf {
+  background-color: #3498db;
+  color: white;
+}
+
+.bmi-category.sağlıklı {
+  background-color: var(--primary-color); /* Yeşil */
+  color: white;
+}
+
+.bmi-category.fazla-kilolu {
+  background-color: var(--secondary-color); /* Turuncu */
+  color: white;
+}
+
+.bmi-category.obez {
+  background-color: var(--accent-color); /* Koyu Turuncu */
+  color: white;
+}
+
+.bmi-category.aşırı-obez {
+  background-color: var(--danger-color); /* Kırmızı */
+  color: white;
+}
+
+.bmi-comment {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.bmi-progress {
+  height: 20px;
+  position: relative;
+  background: linear-gradient(to right, 
+    #3498db 0%, #3498db 18.5%, 
+    var(--primary-color) 18.5%, var(--primary-color) 25%, 
+    var(--secondary-color) 25%, var(--secondary-color) 30%, 
+    var(--accent-color) 30%, var(--accent-color) 35%, 
+    var(--danger-color) 35%, var(--danger-color) 100%);
+  border-radius: 10px;
+  margin: 25px 0 10px;
+  overflow: hidden;
+}
+
+.bmi-marker {
+  position: absolute;
+  width: 4px;
+  height: 30px;
+  background-color: #333;
+  top: -5px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.bmi-marker::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.bmi-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Akordeon */
+.accordion {
+  width: 100%;
+}
+
+.accordion-item {
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.accordion-item:hover {
+  border-color: #ccc;
+}
+
+.accordion-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.accordion-header:hover {
+  background-color: #e9ecef;
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  color: var(--secondary-color); /* Turuncu */
+  transition: var(--transition);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: white;
+  padding: 0 15px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.accordion-content.active {
+  max-height: 500px;
+  padding: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Mobil Uyumluluk İyileştirmeleri */
+@media (max-width: 767px) {
+  .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+  
+  .bmi-value {
+    font-size: 2.5rem;
+  }
+  
+  .bmi-category {
+    font-size: 1.3rem;
+  }
+  
+  .bmi-scale {
+    font-size: 0.75rem;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .slider-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .number-input {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .button {
+    padding: 12px;
+  }
+}
+
+/* Tablet Uyumluluk İyileştirmeleri */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}
+
+/* Erişilebilirlik İyileştirmeleri */
+.button:focus,
+.slider:focus,
+.number-input:focus,
+.select-input:focus,
+.accordion-header:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Dokunmatik Cihazlar İçin İyileştirmeler */
+@media (hover: none) {
+  .button {
+    padding: 16px;
+  }
+  
+  .accordion-header {
+    padding: 18px 15px;
+  }
+    .number-input, .select-input {
+    font-size: 16px; /* iOS'ta yakınlaştırmayı önlemek için */
+  }
+}
+
+/* Animasyonlar */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.bmi-value {
+  animation: pulse 1s ease-in-out;
+}
+
+/* Yazdırma Stilleri */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .button, .accordion-header {
+    display: none;
+  }
+  
+  .accordion-content {
+    max-height: none;
+    display: block;
+    padding: 15px;
+  }
+  
+  .footer {
+    display: none;
+  }
+}
+
+/* Yeşil-Turuncu Tema İçin Ek Özelleştirmeler */
+.result-card {
+  background-color: #f9f9f9;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.accordion-item:nth-child(odd) .accordion-header {
+  border-left: 3px solid var(--primary-color); /* Yeşil */
+}
+
+.accordion-item:nth-child(even) .accordion-header {
+  border-left: 3px solid var(--secondary-color); /* Turuncu */
+}
+
+.accordion-header {
+  color: var(--dark-color);
+}
+
+.accordion-content {
+  color: #444;
+}
+
+.footer {
+  color: var(--primary-color);
+}
+
+/* Vurgu Renkleri */
+::selection {
+  background-color: rgba(46, 204, 113, 0.3);
+  color: var(--dark-color);
+}
+
+/* Buton Hover Efektleri */
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button:hover:after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* Sonuç Kartı İyileştirmeleri */
+.bmi-value {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bmi-category {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Slider İyileştirmeleri */
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Kart Geçiş Efektleri */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calculator-card:hover {
+  border-top-color: #27ae60; /* Daha koyu yeşil */
+}
+
+.info-card:hover {
+  border-top-color: #e67e22; /* Daha koyu turuncu */
+}
+
+/* Form Elemanları İyileştirmeleri */
+.form-label {
+  transition: color 0.3s ease;
+}
+
+.form-group:hover .form-label {
+  color: var(--primary-color);
+}
+
+.info-section .form-group:hover .form-label {
+  color: var(--secondary-color);
+}
+
+/* Akordeon İyileştirmeleri */
+.accordion-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accordion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Sonuç Kartı Animasyonu */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-card {
+  animation: slideIn 0.5s ease forwards;
+}
+
+/* Odak Durumu İyileştirmeleri */
+input:focus, select:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.4);
+}
+
+/* Sayısal Giriş Alanları İyileştirmeleri */
+.number-input::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 24px;
+}
+
+

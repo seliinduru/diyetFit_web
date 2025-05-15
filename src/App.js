@@ -1,12 +1,15 @@
-// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Login/home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Login/register";
 import ForgetPassword from "./pages/Login/forget_password";
-import DietQuestions from "./pages/Login/create_diet"; // <-- BUNU EKLEDİM!
+import DietQuestions from "./pages/Login/create_diet";
 import MainPage from "./pages/Login/main_page";
+import KacKalori from "./pages/Login/KacKalori"; // <-- EKLENDİ
+import BKİ from "./pages/Login/vki/vki";
+import Food from "./pages/Login/food/index";
+
 
 const App = () => {
   return (
@@ -19,6 +22,12 @@ const App = () => {
         <Route path="/forget_password" element={<ForgetPassword />} />
         <Route path="/create_diet" element={<DietQuestions />} />
         <Route path="/main_page" element={<MainPage />} />
+        <Route path="/kac_kalori" element={<KacKalori />} /> {/* <-- YENİ ROUTE */}
+        <Route path="/vki" element={<BKİ />} />
+        <Route path="/recipes" element={<Food />} />
+
+        
+        
       </Routes>
     </Router>
   );
