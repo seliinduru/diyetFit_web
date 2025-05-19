@@ -1,60 +1,62 @@
 /* Temel Sıfırlama ve Değişkenler */
-:root {
-  --primary-color: #2ecc71; /* Yeşil */
-  --secondary-color: #f39c12; /* Turuncu */
-  --accent-color: #e67e22; /* Koyu Turuncu */
-  --danger-color: #e74c3c; /* Kırmızı */
-  --light-color: #ffffff; /* Beyaz */
-  --dark-color: #333333; /* Koyu Gri */
-  --text-color: #333333;
-  --border-radius: 12px;
-  --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
+
+.bmi-calculator-app {
+  --bmi-primary-color: #2ecc71; /* Yeşil */
+  --bmi-secondary-color: #f39c12; /* Turuncu */
+  --bmi-accent-color: #e67e22; /* Koyu Turuncu */
+  --bmi-danger-color: #e74c3c; /* Kırmızı */
+  --bmi-light-color: #ffffff; /* Beyaz */
+  --bmi-dark-color: #333333; /* Koyu Gri */
+  --bmi-text-color: #333333;
+  --bmi-border-radius: 12px;
+  --bmi-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  --bmi-transition: all 0.3s ease;
 }
 
-* {
+
+
+
+.bmi-calculator-app  {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
-body {
+.bmi-calculator-app {
   background-color: #ffffff; /* Beyaz arka plan */
-  color: var(--text-color);
+  color: var(--bmi-text-color);
   line-height: 1.6;
   font-size: 16px;
 }
 
 /* Konteynır ve Ana Düzen */
-.container {
+.bmi-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.header {
+.bmi-header {
   text-align: center;
   margin-bottom: 40px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.main-title {
+.bmi-main-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: var(--primary-color);
+  color: var(--bmi-primary-color);
   font-weight: 700;
 }
 
-.subtitle {
+.bmi-subtitle {
   font-size: 1.1rem;
   color: #666;
   max-width: 700px;
   margin: 0 auto;
 }
 
-.app-layout {
+.bmi-app-layout {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -63,78 +65,78 @@ body {
 
 /* Responsive Düzen */
 @media (min-width: 768px) {
-  .app-layout {
+  .bmi-app-layout {
     flex-direction: row;
   }
   
-  .calculator-section,
-  .info-section {
+  .bmi-calculator-section,
+  .bmi-info-section {
     flex: 1;
   }
   
-  .calculator-section {
+  .bmi-calculator-section {
     margin-right: 15px;
   }
   
-  .info-section {
+  .bmi-info-section {
     margin-left: 15px;
   }
 }
 
 /* Kartlar */
-.card {
+.bmi-card {
   background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--bmi-border-radius);
+  box-shadow: var(--bmi-box-shadow);
   padding: 25px;
   margin-bottom: 20px;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
 }
 
-.card:hover {
+.bmi-card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.calculator-card {
-  border-top: 4px solid var(--primary-color); /* Yeşil */
+.bmi-calculator-card {
+  border-top: 4px solid var(--bmi-primary-color); /* Yeşil */
 }
 
-.info-card {
-  border-top: 4px solid var(--secondary-color); /* Turuncu */
+.bmi-info-card {
+  border-top: 4px solid var(--bmi-secondary-color); /* Turuncu */
 }
 
-.card-title {
+.bmi-card-title {
   font-size: 1.5rem;
   margin-bottom: 25px;
-  color: var(--primary-color);
+  color: var(--bmi-primary-color);
   font-weight: 600;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.info-card .card-title {
-  color: var(--secondary-color);
+.bmi-info-card .bmi-card-title {
+  color: var(--bmi-secondary-color);
 }
 
 /* Form Elemanları */
-.form-group {
+.bmi-form-group {
   margin-bottom: 25px;
 }
 
-.form-label {
+.bmi-form-label {
   display: block;
   margin-bottom: 10px;
   font-weight: 600;
-  color: var(--dark-color);
+  color: var(--bmi-dark-color);
 }
 
-.slider-container {
+.bmi-slider-container {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.slider {
+.bmi-slider {
   flex-grow: 1;
   height: 8px;
   -webkit-appearance: none;
@@ -142,61 +144,61 @@ body {
   background: #e0e0e0;
   border-radius: 4px;
   outline: none;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
 }
 
-.slider::-webkit-slider-thumb {
+.bmi-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--primary-color);
+  background: var(--bmi-primary-color);
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.slider::-moz-range-thumb {
+.bmi-slider::-moz-range-thumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--primary-color);
+  background: var(--bmi-primary-color);
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.slider:hover {
+.bmi-slider:hover {
   background: #d0d0d0;
 }
 
-.number-input {
+.bmi-number-input {
   width: 80px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 6px;
   text-align: center;
   font-size: 1rem;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
 }
 
-.number-input:focus {
-  border-color: var(--primary-color);
+.bmi-number-input:focus {
+  border-color: var(--bmi-primary-color);
   box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
   outline: none;
 }
 
-.full-width {
+.bmi-full-width {
   width: 100%;
 }
 
-.select-input {
+.bmi-select-input {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   background-color: white;
   font-size: 1rem;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
   appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -204,63 +206,63 @@ body {
   background-size: 16px;
 }
 
-.select-input:focus {
-  border-color: var(--primary-color);
+.bmi-select-input:focus {
+  border-color: var(--bmi-primary-color);
   box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
   outline: none;
 }
 
-.button {
+.bmi-button {
   display: block;
   width: 100%;
   padding: 14px;
-  background-color: var(--primary-color);
+  background-color: var(--bmi-primary-color);
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
   text-align: center;
   box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
 }
 
-.button:hover {
+.bmi-button:hover {
   background-color: #27ae60; /* Daha koyu yeşil */
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(46, 204, 113, 0.3);
 }
 
-.button:active {
+.bmi-button:active {
   transform: translateY(0);
 }
 
 /* Sonuç Kartı */
-.result-card {
+.bmi-result-card {
   margin-top: 30px;
   text-align: center;
   padding: 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: bmiFadeIn 0.5s ease-in-out;
 }
 
-@keyframes fadeIn {
+@keyframes bmiFadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.result-title {
+.bmi-result-title {
   font-size: 1.3rem;
   margin-bottom: 15px;
-  color: var(--primary-color);
+  color: var(--bmi-primary-color);
 }
 
 .bmi-value {
   font-size: 3rem;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--bmi-primary-color);
   margin: 10px 0;
   line-height: 1;
 }
@@ -280,22 +282,22 @@ body {
 }
 
 .bmi-category.sağlıklı {
-  background-color: var(--primary-color); /* Yeşil */
+  background-color: var(--bmi-primary-color); /* Yeşil */
   color: white;
 }
 
 .bmi-category.fazla-kilolu {
-  background-color: var(--secondary-color); /* Turuncu */
+  background-color: var(--bmi-secondary-color); /* Turuncu */
   color: white;
 }
 
 .bmi-category.obez {
-  background-color: var(--accent-color); /* Koyu Turuncu */
+  background-color: var(--bmi-accent-color); /* Koyu Turuncu */
   color: white;
 }
 
 .bmi-category.aşırı-obez {
-  background-color: var(--danger-color); /* Kırmızı */
+  background-color: var(--bmi-danger-color); /* Kırmızı */
   color: white;
 }
 
@@ -310,10 +312,10 @@ body {
   position: relative;
   background: linear-gradient(to right, 
     #3498db 0%, #3498db 18.5%, 
-    var(--primary-color) 18.5%, var(--primary-color) 25%, 
-    var(--secondary-color) 25%, var(--secondary-color) 30%, 
-    var(--accent-color) 30%, var(--accent-color) 35%, 
-    var(--danger-color) 35%, var(--danger-color) 100%);
+    var(--bmi-primary-color) 18.5%, var(--bmi-primary-color) 25%, 
+    var(--bmi-secondary-color) 25%, var(--bmi-secondary-color) 30%, 
+    var(--bmi-accent-color) 30%, var(--bmi-accent-color) 35%, 
+    var(--bmi-danger-color) 35%, var(--bmi-danger-color) 100%);
   border-radius: 10px;
   margin: 25px 0 10px;
   overflow: hidden;
@@ -350,23 +352,23 @@ body {
 }
 
 /* Akordeon */
-.accordion {
+.bmi-accordion {
   width: 100%;
 }
 
-.accordion-item {
+.bmi-accordion-item {
   margin-bottom: 12px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
 }
 
-.accordion-item:hover {
+.bmi-accordion-item:hover {
   border-color: #ccc;
 }
 
-.accordion-header {
+.bmi-accordion-header {
   background-color: #f8f9fa;
   padding: 15px;
   cursor: pointer;
@@ -374,20 +376,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: var(--transition);
+  transition: var(--bmi-transition);
 }
 
-.accordion-header:hover {
+.bmi-accordion-header:hover {
   background-color: #e9ecef;
 }
 
-.accordion-icon {
+.bmi-accordion-icon {
   font-size: 1.2rem;
-  color: var(--secondary-color); /* Turuncu */
-  transition: var(--transition);
+  color: var(--bmi-secondary-color); /* Turuncu */
+  transition: var(--bmi-transition);
 }
 
-.accordion-content {
+.bmi-accordion-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -397,14 +399,14 @@ body {
   white-space: pre-line;
 }
 
-.accordion-content.active {
+.bmi-accordion-content.active {
   max-height: 500px;
   padding: 15px;
   border-top: 1px solid #e0e0e0;
 }
 
 /* Footer */
-.footer {
+.bmi-footer {
   text-align: center;
   padding: 20px 0;
   margin-top: 20px;
@@ -415,21 +417,21 @@ body {
 
 /* Mobil Uyumluluk İyileştirmeleri */
 @media (max-width: 767px) {
-  .main-title {
+  .bmi-main-title {
     font-size: 1.8rem;
   }
   
-  .subtitle {
+  .bmi-subtitle {
     font-size: 1rem;
   }
   
-  .card {
+  .bmi-card {
     padding: 20px;
   }
   
-  .card-title {
+  .bmi-card-title {
     font-size: 1.3rem;
-  }
+      }
   
   .bmi-value {
     font-size: 2.5rem;
@@ -443,143 +445,144 @@ body {
     font-size: 0.75rem;
   }
   
-  .form-group {
+  .bmi-form-group {
     margin-bottom: 20px;
   }
   
-  .slider-container {
+  .bmi-slider-container {
     flex-direction: column;
     align-items: stretch;
   }
   
-  .number-input {
+  .bmi-number-input {
     width: 100%;
     margin-top: 10px;
   }
   
-  .button {
+  .bmi-button {
     padding: 12px;
   }
 }
 
 /* Tablet Uyumluluk İyileştirmeleri */
 @media (min-width: 768px) and (max-width: 991px) {
-  .container {
+  .bmi-container {
     padding: 15px;
   }
   
-  .card {
+  .bmi-card {
     padding: 20px;
   }
 }
 
 /* Erişilebilirlik İyileştirmeleri */
-.button:focus,
-.slider:focus,
-.number-input:focus,
-.select-input:focus,
-.accordion-header:focus {
-  outline: 2px solid var(--primary-color);
+.bmi-button:focus,
+.bmi-slider:focus,
+.bmi-number-input:focus,
+.bmi-select-input:focus,
+.bmi-accordion-header:focus {
+  outline: 2px solid var(--bmi-primary-color);
   outline-offset: 2px;
 }
 
 /* Dokunmatik Cihazlar İçin İyileştirmeler */
 @media (hover: none) {
-  .button {
+  .bmi-button {
     padding: 16px;
   }
   
-  .accordion-header {
+  .bmi-accordion-header {
     padding: 18px 15px;
   }
-    .number-input, .select-input {
+  
+  .bmi-number-input, .bmi-select-input {
     font-size: 16px; /* iOS'ta yakınlaştırmayı önlemek için */
   }
 }
 
 /* Animasyonlar */
-@keyframes pulse {
+@keyframes bmiPulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
 .bmi-value {
-  animation: pulse 1s ease-in-out;
+  animation: bmiPulse 1s ease-in-out;
 }
 
 /* Yazdırma Stilleri */
 @media print {
-  body {
+  .bmi-calculator-app {
     background-color: white;
     color: black;
   }
   
-  .container {
+  .bmi-container {
     width: 100%;
     max-width: none;
     padding: 0;
   }
   
-  .card {
+  .bmi-card {
     box-shadow: none;
     border: 1px solid #ddd;
   }
   
-  .button, .accordion-header {
+  .bmi-button, .bmi-accordion-header {
     display: none;
   }
   
-  .accordion-content {
+  .bmi-accordion-content {
     max-height: none;
     display: block;
     padding: 15px;
   }
   
-  .footer {
+  .bmi-footer {
     display: none;
   }
 }
 
 /* Yeşil-Turuncu Tema İçin Ek Özelleştirmeler */
-.result-card {
+.bmi-result-card {
   background-color: #f9f9f9;
   border: 1px solid rgba(46, 204, 113, 0.2);
 }
 
-.accordion-item:nth-child(odd) .accordion-header {
-  border-left: 3px solid var(--primary-color); /* Yeşil */
+.bmi-accordion-item:nth-child(odd) .bmi-accordion-header {
+  border-left: 3px solid var(--bmi-primary-color); /* Yeşil */
 }
 
-.accordion-item:nth-child(even) .accordion-header {
-  border-left: 3px solid var(--secondary-color); /* Turuncu */
+.bmi-accordion-item:nth-child(even) .bmi-accordion-header {
+  border-left: 3px solid var(--bmi-secondary-color); /* Turuncu */
 }
 
-.accordion-header {
-  color: var(--dark-color);
+.bmi-accordion-header {
+  color: var(--bmi-dark-color);
 }
 
-.accordion-content {
+.bmi-accordion-content {
   color: #444;
 }
 
-.footer {
-  color: var(--primary-color);
+.bmi-footer {
+  color: var(--bmi-primary-color);
 }
 
 /* Vurgu Renkleri */
-::selection {
+.bmi-calculator-app ::selection {
   background-color: rgba(46, 204, 113, 0.3);
-  color: var(--dark-color);
+  color: var(--bmi-dark-color);
 }
 
 /* Buton Hover Efektleri */
-.button {
+.bmi-button {
   position: relative;
   overflow: hidden;
 }
 
-.button:after {
+.bmi-button:after {
   content: '';
   position: absolute;
   top: 50%;
@@ -593,11 +596,11 @@ body {
   transform-origin: 50% 50%;
 }
 
-.button:hover:after {
-  animation: ripple 1s ease-out;
+.bmi-button:hover:after {
+  animation: bmiRipple 1s ease-out;
 }
 
-@keyframes ripple {
+@keyframes bmiRipple {
   0% {
     transform: scale(0, 0);
     opacity: 0.5;
@@ -622,52 +625,52 @@ body {
 }
 
 /* Slider İyileştirmeleri */
-.slider::-webkit-slider-thumb:hover {
+.bmi-slider::-webkit-slider-thumb:hover {
   transform: scale(1.1);
 }
 
-.slider::-moz-range-thumb:hover {
+.bmi-slider::-moz-range-thumb:hover {
   transform: scale(1.1);
 }
 
 /* Kart Geçiş Efektleri */
-.card {
+.bmi-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.calculator-card:hover {
+.bmi-calculator-card:hover {
   border-top-color: #27ae60; /* Daha koyu yeşil */
 }
 
-.info-card:hover {
+.bmi-info-card:hover {
   border-top-color: #e67e22; /* Daha koyu turuncu */
 }
 
 /* Form Elemanları İyileştirmeleri */
-.form-label {
+.bmi-form-label {
   transition: color 0.3s ease;
 }
 
-.form-group:hover .form-label {
-  color: var(--primary-color);
+.bmi-form-group:hover .bmi-form-label {
+  color: var(--bmi-primary-color);
 }
 
-.info-section .form-group:hover .form-label {
-  color: var(--secondary-color);
+.bmi-info-section .bmi-form-group:hover .bmi-form-label {
+  color: var(--bmi-secondary-color);
 }
 
 /* Akordeon İyileştirmeleri */
-.accordion-item {
+.bmi-accordion-item {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.accordion-item:hover {
+.bmi-accordion-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Sonuç Kartı Animasyonu */
-@keyframes slideIn {
+@keyframes bmiSlideIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -678,21 +681,22 @@ body {
   }
 }
 
-.result-card {
-  animation: slideIn 0.5s ease forwards;
+.bmi-result-card {
+  animation: bmiSlideIn 0.5s ease forwards;
 }
 
 /* Odak Durumu İyileştirmeleri */
-input:focus, select:focus, button:focus {
+.bmi-calculator-app input:focus, 
+.bmi-calculator-app select:focus, 
+.bmi-calculator-app button:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.4);
 }
 
 /* Sayısal Giriş Alanları İyileştirmeleri */
-.number-input::-webkit-inner-spin-button,
-.number-input::-webkit-outer-spin-button {
+.bmi-number-input::-webkit-inner-spin-button,
+.bmi-number-input::-webkit-outer-spin-button {
   opacity: 1;
   height: 24px;
 }
-
 

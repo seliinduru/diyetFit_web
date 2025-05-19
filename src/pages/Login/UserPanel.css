@@ -1,0 +1,731 @@
+.user-panel {
+  font-family: "Segoe UI", Roboto, Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+
+
+/* Header Styles */
+.health-journal-header {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #43cea2, #ff9800);
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 1100px;
+  transition: all 0.3s ease-in-out;
+}
+
+.health-journal-header:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.health-journal-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 25px;
+}
+
+.section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  height: 100%;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #4caf50;
+  border-radius: 3px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: #666;
+  margin: 15px 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Note Section - Top Left */
+.note-section {
+  border-left: 5px solid #4caf50;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.note-container {
+  position: relative;
+}
+
+.note-input {
+  width: 100%;
+  height: 120px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  resize: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.note-input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.emoji-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1;
+}
+
+.emoji-button:hover {
+  transform: scale(1.2);
+}
+
+.emoji-picker-container {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Water Tracker Section - Top Right */
+.water-section {
+  border-left: 5px solid #2196f3;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.date-container {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.date-text {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+
+.progress-container {
+  width: 100%;
+  height: 12px;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  margin: 20px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #81c784, #4caf50);
+  border-radius: 6px;
+  transition: width 0.5s ease-out;
+}
+
+.water-glasses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.water-glass {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.filled-glass {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.3);
+  animation: fillGlass 0.5s ease-out;
+}
+
+.empty-glass {
+  background-color: #e8f5e9;
+  border: 1px dashed #a5d6a7;
+}
+
+@keyframes fillGlass {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.glass-text {
+  font-size: 16px;
+}
+
+.water-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.water-button {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.water-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.water-button:active {
+  transform: scale(0.95);
+}
+
+.water-count {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+/* Weight Tracker Section - Bottom Left */
+.weight-section {
+  border-left: 5px solid #8bc34a;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.weight-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.weight-input-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.weight-input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.weight-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.weight-input:focus {
+  outline: none;
+  border-color: #8bc34a;
+  box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.2);
+}
+
+.weight-display {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 25px 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.weight-value {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2e7d32;
+  line-height: 1;
+}
+
+.weight-unit {
+  font-size: 22px;
+  color: #666;
+  margin-bottom: 8px;
+  margin-left: 5px;
+}
+
+.weight-controls {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+.weight-button {
+  background: linear-gradient(135deg, #8bc34a, #689f38);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.weight-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.weight-button:active {
+  transform: scale(0.95);
+}
+
+.progress-info {
+  background-color: #f1f8e9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border-left: 4px solid #8bc34a;
+  transition: all 0.3s ease;
+}
+
+.progress-info:hover {
+  background-color: #e8f5e9;
+  transform: translateX(5px);
+}
+
+.progress-info-text {
+  font-size: 16px;
+  color: #33691e;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+.weight-chart-container {
+  margin-top: 30px;
+  height: 250px;
+  position: relative;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Todo List Section - Bottom Right */
+.todo-section {
+  border-left: 5px solid #ff9800;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.todo-input-container {
+  display: flex;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: #ff9800;
+  box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+}
+
+.todo-add-button {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo-add-button:hover {
+  background: linear-gradient(135deg, #f57c00, #e65100);
+  box-shadow: 0 3px 8px rgba(245, 124, 0, 0.3);
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.todo-item:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.todo-item.completed {
+  background-color: #f1f8e9;
+  border-left: 3px solid #8bc34a;
+}
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #8bc34a;
+}
+
+.todo-text {
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-delete-button {
+  background: none;
+  border: none;
+  color: #f44336;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.todo-delete-button:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.todo-empty {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  
+  .note-section {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .water-section {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .weight-section {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .todo-section {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .health-journal-header h1 {
+    font-size: 24px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+  .section {
+    padding: 20px 15px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .section-subtitle {
+    font-size: 14px;
+  }
+  
+  .weight-value {
+    font-size: 40px;
+  }
+  
+  .weight-unit {
+    font-size: 18px;
+  }
+  
+  .water-glass {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .weight-input-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .weight-input-group {
+    min-width: 100%;
+  }
+  
+  .emoji-picker-container {
+    right: -50px;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .health-journal-header h1 {
+    font-size: 20px;
+  }
+  
+  .water-glasses-container {
+    gap: 5px;
+  }
+  
+  .water-glass {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .glass-text {
+    font-size: 14px;
+  }
+  
+  .weight-value {
+    font-size: 36px;
+  }
+  
+  .weight-controls {
+    gap: 20px;
+  }
+  
+  .weight-button,
+  .water-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  
+  .progress-info-text {
+    font-size: 14px;
+  }
+  
+  .todo-input-container {
+    flex-direction: column;
+  }
+  
+  .todo-add-button {
+    padding: 10px;
+  }
+  
+  .emoji-picker-container {
+    right: -70px;
+    transform: scale(0.8);
+  }
+  
+  .weight-chart-container {
+    height: 200px;
+  }
+}
+
+/* Animation for section transitions */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.note-section {
+  animation: slideInFromLeft 0.5s ease-out;
+}
+
+.water-section {
+  animation: slideInFromLeft 0.5s ease-out 0.1s;
+  animation-fill-mode: both;
+}
+
+.weight-section {
+  animation: slideInFromLeft 0.5s ease-out 0.2s;
+  animation-fill-mode: both;
+}
+
+.todo-section {
+  animation: slideInFromLeft 0.5s ease-out 0.3s;
+  animation-fill-mode: both;
+}
+
+/* Pulse animation for buttons */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.water-button:focus,
+.weight-button:focus,
+.todo-add-button:focus {
+  animation: pulse 1.5s infinite;
+  outline: none;
+}

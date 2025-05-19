@@ -269,24 +269,49 @@ const MainPage = () => {
           </div>
         )}
 
-        {/* Welcome Section - Enhanced with animations */}
-        <section class="welcome-section">
-          <div class="welcome-container">
-            <div class="welcome-content">
-              <div class="brand-element fade-in">
-                <div class="logo-shape">
-                  <span class="logo-text">🍀</span>
-                </div>
+        {/* Welcome Section - Professional Design */}
+        <section className="welcome-section">
+          <div className="welcome-container">
+            <div className="welcome-content">
+              <div className="brand-element">
+                <div className="brand-logo"></div>
               </div>
-              <div class="text-content slide-up">
-                <h1 class="welcome-title">DiyetFit'e Hoşgeldiniz</h1>
-                <p class="welcome-description">
-                  Sağlıklı yaşam yolculuğunuzda yanınızdayız. Kişiselleştirilmiş
-                  diyet planları, kalori takibi ve sağlıklı tariflerle
-                  hedeflerinize ulaşmanıza yardımcı oluyoruz.
-                </p>
-                <h2 class="welcome-subtitle">Haydi Başlayalım</h2>
-                <button class="action-button">Diyet Oluştur</button>
+              <div className="text-content">
+                <h1 className="welcome-title">DiyetFit'e Hoşgeldiniz</h1>
+                <div className="title-underline"></div>
+
+                <div className="description-container">
+                  <p className="welcome-description">
+                    Sağlıklı yaşam yolculuğunuzda yanınızdayız.
+                    Kişiselleştirilmiş diyet planları, kalori takibi ve sağlıklı
+                    tariflerle hedeflerinize ulaşmanıza yardımcı oluyoruz.
+                  </p>
+                  <p className="welcome-description">
+                    Su tüketimi, kilo takibi ve günlük notlarınızı Sağlık
+                    Günlüğü'nde kayıt altına alarak sağlıklı yaşam hedeflerinizi
+                    daha kolay takip edebilirsiniz.
+                  </p>
+                </div>
+
+                <h2 className="welcome-subtitle">Haydi Başlayalım</h2>
+
+                <div className="action-buttons">
+                  <button
+                    className="action-button diet-button"
+                    onClick={() => navigate("/create_diet")}
+                  >
+                    <span className="button-icon">📋</span>
+                    <span className="button-text">Diyet Oluştur</span>
+                  </button>
+
+                  <button
+                    className="action-button journal-button"
+                    onClick={() => navigate("/userPanel")}
+                  >
+                    <span className="button-icon">📔</span>
+                    <span className="button-text">Sağlık Günlüğü</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -692,6 +717,12 @@ const MainPage = () => {
       position: relative;
       overflow: hidden;
     }
+      .welcome-content .text-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
           
     /* Section title animation */
     .section-title {

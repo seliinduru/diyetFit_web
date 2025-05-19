@@ -208,7 +208,7 @@ const Register = () => {
           <p>
             Zaten hesabınız var mı?{" "}
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/Login")}
               style={{ background: "none", border: "none", color: styles.footerLink.color, cursor: "pointer" }}
               onMouseEnter={(e) => (e.target.style.textDecoration = styles.footerLinkHover.textDecoration)}
               onMouseLeave={(e) => (e.target.style.textDecoration = "none")}

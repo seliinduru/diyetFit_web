@@ -52,15 +52,15 @@ const BMICalculator = () => {
   };
 
   return (
-    <div className="card calculator-card">
-      <h2 className="card-title">VKİ Hesaplama Aracı</h2>
+    <div className="bmi-card bmi-calculator-card">
+      <h2 className="bmi-card-title">VKİ Hesaplama Aracı</h2>
       
-      <div className="form-group">
-        <label className="form-label">Boy (cm)</label>
-        <div className="slider-container">
+      <div className="bmi-form-group">
+        <label className="bmi-form-label">Boy (cm)</label>
+        <div className="bmi-slider-container">
           <input
             type="range"
-            className="slider"
+            className="bmi-slider"
             min="120"
             max="220"
             value={height}
@@ -68,7 +68,7 @@ const BMICalculator = () => {
           />
           <input
             type="number"
-            className="number-input"
+            className="bmi-number-input"
             value={height}
             min="120"
             max="220"
@@ -77,12 +77,12 @@ const BMICalculator = () => {
         </div>
       </div>
       
-      <div className="form-group">
-        <label className="form-label">Kilo (kg)</label>
-        <div className="slider-container">
+      <div className="bmi-form-group">
+        <label className="bmi-form-label">Kilo (kg)</label>
+        <div className="bmi-slider-container">
           <input
             type="range"
-            className="slider"
+            className="bmi-slider"
             min="30"
             max="200"
             value={weight}
@@ -90,7 +90,7 @@ const BMICalculator = () => {
           />
           <input
             type="number"
-            className="number-input"
+            className="bmi-number-input"
             value={weight}
             min="30"
             max="200"
@@ -99,11 +99,11 @@ const BMICalculator = () => {
         </div>
       </div>
       
-      <div className="form-group">
-        <label className="form-label">Yaş</label>
+      <div className="bmi-form-group">
+        <label className="bmi-form-label">Yaş</label>
         <input
           type="number"
-          className="number-input full-width"
+          className="bmi-number-input bmi-full-width"
           value={age}
           min="1"
           max="120"
@@ -111,10 +111,10 @@ const BMICalculator = () => {
         />
       </div>
       
-      <div className="form-group">
-        <label className="form-label">Cinsiyet</label>
+      <div className="bmi-form-group">
+        <label className="bmi-form-label">Cinsiyet</label>
         <select
-          className="select-input"
+          className="bmi-select-input"
           value={gender}
           onChange={(e) => setGender(e.target.value)}
         >
@@ -123,20 +123,20 @@ const BMICalculator = () => {
         </select>
       </div>
       
-      <button className="button" onClick={calculateBMI}>
+      <button className="bmi-button" onClick={calculateBMI}>
         VKİ Hesapla
       </button>
       
       {bmi && (
-        <div className="result-card">
-          <h3 className="result-title">Sonuç</h3>
+        <div className="bmi-result-card">
+          <h3 className="bmi-result-title">Sonuç</h3>
           <div className="bmi-value">{bmi}</div>
           <div className={`bmi-category ${category.toLowerCase().replace(' ', '-')}`}>{category}</div>
           <p className="bmi-comment">{comment}</p>
           
           <div className="bmi-progress">
             <div 
-              className="bmi-marker" 
+              className="bmi-marker"
               style={{ left: `${markerPosition}%` }}
             ></div>
           </div>
@@ -157,7 +157,6 @@ const BMICalculator = () => {
 // Bilgilendirici İçerik Bileşeni
 const InfoSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
   const infoItems = [
     {
       title: 'Vücut Kitle İndeksi (VKİ) Nedir?',
@@ -206,19 +205,19 @@ const InfoSection = () => {
   };
 
   return (
-    <div className="card info-card">
-      <h2 className="card-title">Bilgilendirici İçerik</h2>
-      <div className="accordion">
+    <div className="bmi-card bmi-info-card">
+      <h2 className="bmi-card-title">Bilgilendirici İçerik</h2>
+      <div className="bmi-accordion">
         {infoItems.map((item, index) => (
-          <div className="accordion-item" key={index}>
+          <div className="bmi-accordion-item" key={index}>
             <div 
-              className="accordion-header" 
+              className="bmi-accordion-header"
               onClick={() => toggleAccordion(index)}
             >
               {item.title}
-              <span className="accordion-icon">{activeIndex === index ? '−' : '+'}</span>
+              <span className="bmi-accordion-icon">{activeIndex === index ? '−' : '+'}</span>
             </div>
-            <div className={`accordion-content ${activeIndex === index ? 'active' : ''}`}>
+            <div className={`bmi-accordion-content ${activeIndex === index ? 'active' : ''}`}>
               {item.content}
             </div>
           </div>
@@ -231,24 +230,27 @@ const InfoSection = () => {
 // Ana Uygulama Bileşeni
 function BKİ() {
   return (
-    <div className="container">
-      <header className="header">
-        <h1 className="main-title">Vücut Kitle İndeksi (VKİ) Hesaplama</h1>
-        <p className="subtitle">Sağlıklı yaşam için vücut kitle indeksinizi hesaplayın ve değerlendirin</p>
-      </header>
-      <div className="app-layout">
-        <div className="calculator-section">
-          <BMICalculator />
+    <div className="bmi-calculator-app">
+      <div className="bmi-container">
+        <header className="bmi-header">
+          <h1 className="bmi-main-title">Vücut Kitle İndeksi (VKİ) Hesaplama</h1>
+          <p className="bmi-subtitle">Sağlıklı yaşam için vücut kitle indeksinizi hesaplayın ve değerlendirin</p>
+        </header>
+        <div className="bmi-app-layout">
+          <div className="bmi-calculator-section">
+            <BMICalculator />
+          </div>
+          <div className="bmi-info-section">
+            <InfoSection />
+          </div>
         </div>
-        <div className="info-section">
-          <InfoSection />
-        </div>
+        <footer className="bmi-footer">
+          <p>© 2023 VKİ Hesaplama Aracı | Tüm Hakları Saklıdır</p>
+        </footer>
       </div>
-      <footer className="footer">
-        <p>© 2023 VKİ Hesaplama Aracı | Tüm Hakları Saklıdır</p>
-      </footer>
     </div>
   );
 }
 
 export default BKİ;
+ 

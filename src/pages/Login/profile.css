@@ -1,0 +1,850 @@
+/* Genel Stiller */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body.profile-dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* Container */
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.profile-container.profile-dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #2e7d32;
+  padding-bottom: 20px;
+}
+
+.profile-header-left, .profile-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.profile-header-right {
+  gap: 12px;
+}
+
+.profile-title {
+  font-size: 2.2rem;
+  color: #1b5e20;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.profile-section-title {
+  color: #1b5e20;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.profile-dark-mode .profile-section-title {
+  color: #81c784;
+}
+
+.profile-section-header {
+  margin-bottom: 24px;
+}
+
+.profile-section-description {
+  color: #546e7a;
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 80%;
+}
+
+.profile-dark-mode .profile-section-description {
+  color: #b0bec5;
+}
+
+/* Tema Değiştirme ve Çıkış Butonları */
+.profile-theme-toggle, .profile-logout-button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-theme-toggle:hover, .profile-logout-button:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-logout-button {
+  background-color: #d32f2f;
+}
+
+/* Kullanıcı Karşılama Alanı */
+.profile-user-welcome {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  padding: 24px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.profile-user-welcome:hover {
+  transform: translateY(-3px);
+}
+
+.profile-dark-mode .profile-user-welcome {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #2e7d32;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-right: 24px;
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+  border: 3px solid #ffffff;
+}
+
+.profile-dark-mode .profile-avatar {
+  border-color: #1e1e1e;
+}
+
+.profile-welcome-text {
+  font-size: 1.7rem;
+  color: #1b5e20;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.profile-dark-mode .profile-welcome-text {
+  color: #81c784;
+}
+
+/* İçerik Konteyneri */
+.profile-content-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.profile-dark-mode .profile-content-container {
+  background-color: #1e1e1e;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Sağlık Günlüğü Bölümü */
+.profile-health-journal {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 35px;
+}
+
+.profile-dark-mode .profile-health-journal {
+  border-bottom-color: #333333;
+}
+
+.profile-journal-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.profile-journal-button {
+  background-color: #43a047;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* Diyet Planı Bölümü */
+.profile-diet-section {
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-dark-mode .profile-diet-section {
+  border-bottom-color: #333333;
+}
+
+/* Bilgi Konteyneri ve Öğeleri */
+/* Bilgi Konteyneri ve Öğeleri - İki Sütunlu Düzen */
+.profile-info-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 35px;
+}
+
+.profile-info-item {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.profile-dark-mode .profile-info-item {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.profile-info-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  transform: translateX(5px);
+}
+
+.profile-dark-mode .profile-info-item:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.profile-info-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.profile-info-icon {
+  font-size: 1.3rem;
+  margin-right: 10px;
+  opacity: 0.9;
+}
+
+.profile-info-question {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #455a64;
+  margin: 0;
+}
+
+.profile-dark-mode .profile-info-question {
+  color: #b0bec5;
+}
+
+.profile-info-answer {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1b5e20;
+  margin-left: 32px;
+  padding: 3px 0;
+  letter-spacing: -0.2px;
+  transition: all 0.2s ease;
+}
+
+.profile-dark-mode .profile-info-answer {
+  color: #81c784;
+}
+
+.profile-info-item:hover .profile-info-answer {
+  transform: scale(1.02);
+}
+
+/* Kartlar - Eski stil, yeni tasarımda kullanılmıyor ama korunuyor */
+.profile-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.profile-card {
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.profile-dark-mode .profile-card {
+  background-color: #2a2a2a;
+  border-color: #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1b5e20;
+  letter-spacing: -0.2px;
+}
+
+.profile-dark-mode .profile-card-title {
+  color: #81c784;
+}
+
+.profile-card-content {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #37474f;
+}
+
+.profile-dark-mode .profile-card-content {
+  color: #b0bec5;
+}
+
+/* Diyet Planı Yok Konteyneri */
+.profile-no-diet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+}
+
+.profile-dark-mode .profile-no-diet-container {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.profile-no-diet-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.profile-no-diet-title {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  color: #455a64;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+.profile-dark-mode .profile-no-diet-title {
+  color: #b0bec5;
+}
+
+/* Aksiyon Butonları */
+.profile-action-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.profile-action-button {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.2px;
+}
+
+.profile-action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-create-diet {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.profile-view-diet {
+  background-color: #1565c0;
+  color: white;
+}
+
+.profile-button-icon {
+  font-size: 1.3rem;
+}
+
+/* Hızlı Erişim Kartları */
+.profile-quick-access {
+  margin-top: 10px;
+}
+
+.profile-quick-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.profile-quick-card {
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  height: 180px;
+}
+
+.profile-dark-mode .profile-quick-card {
+  background-color: #2a2a2a;
+  border-color: #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-quick-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: #e8f5e9;
+}
+
+.profile-dark-mode .profile-quick-card:hover {
+  background-color: #1b5e20;
+}
+
+.profile-quick-card-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.profile-quick-card-title {
+  font-weight: 600;
+  color: #1b5e20;
+  font-size: 1.15rem;
+  letter-spacing: -0.2px;
+}
+
+.profile-dark-mode .profile-quick-card-title {
+  color: #81c784;
+}
+
+.profile-dark-mode .profile-quick-card:hover .profile-quick-card-title {
+  color: #ffffff;
+}
+
+/* Yükleme Göstergesi (devam) */
+.profile-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  flex-direction: column;
+}
+
+.profile-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-left-color: #2e7d32;
+  animation: profile-spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.profile-dark-mode .profile-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #81c784;
+}
+
+@keyframes profile-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.profile-loading-container p {
+  font-size: 1.1rem;
+  color: #546e7a;
+}
+
+.profile-dark-mode .profile-loading-container p {
+  color: #b0bec5;
+}
+
+/* Hata Mesajı */
+.profile-error-message {
+  text-align: center;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  color: #d32f2f;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  line-height: 1.6;
+}
+
+.profile-dark-mode .profile-error-message {
+  background-color: #1e1e1e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Tasarım */
+@media (max-width: 992px) {
+  .profile-cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .profile-quick-cards {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  
+  .profile-info-answer {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 16px;
+  }
+  
+  .profile-title {
+    font-size: 1.8rem;
+  }
+  
+  .profile-welcome-text {
+    font-size: 1.4rem;
+  }
+  
+  .profile-section-title {
+    font-size: 1.4rem;
+  }
+  
+  .profile-section-description {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+  
+  .profile-content-container {
+    padding: 20px;
+    gap: 30px;
+  }
+  
+  .profile-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-quick-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .profile-quick-card {
+    height: 160px;
+    padding: 16px;
+  }
+  
+  .profile-quick-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .profile-quick-card-title {
+    font-size: 1rem;
+  }
+  
+  .profile-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    margin-right: 16px;
+  }
+  
+  .profile-action-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .profile-user-welcome {
+    padding: 20px;
+  }
+  
+  .profile-info-question {
+    font-size: 1rem;
+  }
+  
+  .profile-info-answer {
+    font-size: 1.2rem;
+    margin-left: 30px;
+  }
+  
+  .profile-info-icon {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .profile-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .profile-title {
+    font-size: 1.6rem;
+  }
+  
+  .profile-welcome-text {
+    font-size: 1.2rem;
+  }
+  
+  .profile-user-welcome {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15px;
+  }
+  
+  .profile-avatar {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  .profile-quick-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .profile-quick-card {
+    height: 140px;
+  }
+  
+  .profile-action-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .profile-journal-actions {
+    width: 100%;
+  }
+  
+  .profile-journal-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .profile-section-title {
+    font-size: 1.3rem;
+  }
+  
+  .profile-card {
+    padding: 20px;
+  }
+  
+  .profile-card-title {
+    font-size: 1.15rem;
+  }
+  
+  .profile-card-content {
+    font-size: 1rem;
+  }
+  
+  .profile-no-diet-title {
+    font-size: 1.3rem;
+  }
+  
+  .profile-no-diet-container {
+    padding: 30px 15px;
+  }
+  
+  .profile-theme-toggle, .profile-logout-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .profile-info-answer {
+    font-size: 1.1rem;
+    margin-left: 20px;
+  }
+  
+  .profile-info-item:hover {
+    transform: translateX(0);
+  }
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-content-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.profile-card {
+  animation: fadeIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.profile-card:nth-child(1) { animation-delay: 0.1s; }
+.profile-card:nth-child(2) { animation-delay: 0.2s; }
+.profile-card:nth-child(3) { animation-delay: 0.3s; }
+.profile-card:nth-child(4) { animation-delay: 0.4s; }
+.profile-card:nth-child(5) { animation-delay: 0.5s; }
+
+.profile-quick-card {
+  animation: fadeIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.profile-quick-card:nth-child(1) { animation-delay: 0.1s; }
+.profile-quick-card:nth-child(2) { animation-delay: 0.2s; }
+.profile-quick-card:nth-child(3) { animation-delay: 0.3s; }
+.profile-quick-card:nth-child(4) { animation-delay: 0.4s; }
+
+.profile-info-item {
+  animation: fadeIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.profile-info-item:nth-child(1) { animation-delay: 0.1s; }
+.profile-info-item:nth-child(2) { animation-delay: 0.2s; }
+.profile-info-item:nth-child(3) { animation-delay: 0.3s; }
+.profile-info-item:nth-child(4) { animation-delay: 0.4s; }
+.profile-info-item:nth-child(5) { animation-delay: 0.5s; }
+.profile-info-item:nth-child(6) { animation-delay: 0.6s; }
+.profile-info-item:nth-child(7) { animation-delay: 0.7s; }
+.profile-info-item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Erişilebilirlik İyileştirmeleri */
+.profile-action-button:focus,
+.profile-theme-toggle:focus,
+.profile-logout-button:focus,
+.profile-quick-card:focus {
+  outline: 2px solid #2e7d32;
+  outline-offset: 2px;
+}
+
+.profile-dark-mode .profile-action-button:focus,
+.profile-dark-mode .profile-theme-toggle:focus,
+.profile-dark-mode .profile-logout-button:focus,
+.profile-dark-mode .profile-quick-card:focus {
+  outline-color: #81c784;
+}
+
+/* Dokunmatik cihazlar için iyileştirmeler */
+@media (hover: none) {
+  .profile-quick-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: #f5f5f5;
+  }
+  
+  .profile-dark-mode .profile-quick-card:hover {
+    background-color: #2a2a2a;
+  }
+  
+  .profile-dark-mode .profile-quick-card:hover .profile-quick-card-title {
+    color: #81c784;
+  }
+  
+  .profile-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .profile-dark-mode .profile-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .profile-action-button:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-theme-toggle:hover, .profile-logout-button:hover {
+    transform: none;
+    opacity: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-user-welcome:hover {
+    transform: none;
+  }
+  
+  .profile-info-item:hover {
+    transform: none;
+    background-color: transparent;
+  }
+  
+  .profile-info-item:hover .profile-info-answer {
+    transform: none;
+  }
+}
+
+/* Yüksek kontrast modu için iyileştirmeler */
+@media (forced-colors: active) {
+  .profile-avatar,
+  .profile-action-button,
+  .profile-theme-toggle,
+  .profile-logout-button,
+  .profile-quick-card,
+  .profile-card,
+  .profile-info-item {
+    border: 1px solid currentColor;
+  }
+}

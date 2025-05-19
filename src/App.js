@@ -9,6 +9,9 @@ import MainPage from "./pages/Login/main_page";
 import KacKalori from "./pages/Login/KacKalori"; // <-- EKLENDİ
 import BKİ from "./pages/Login/vki/vki";
 import Food from "./pages/Login/food/index";
+import UserPanel from "./pages/Login/userPanel";
+import UserProfilePage from "./pages/Login/profile";
+
 
 
 const App = () => {
@@ -25,6 +28,9 @@ const App = () => {
         <Route path="/kac_kalori" element={<KacKalori />} /> {/* <-- YENİ ROUTE */}
         <Route path="/vki" element={<BKİ />} />
         <Route path="/recipes" element={<Food />} />
+        <Route path="/userPanel" element={<UserPanel />} />
+        <Route path="/profile" element={<UserProfilePage />} />
+        
 
         
         
