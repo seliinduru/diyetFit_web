@@ -11,7 +11,7 @@ import BKİ from "./pages/Login/vki/vki";
 import Food from "./pages/Login/food/index";
 import UserPanel from "./pages/Login/userPanel";
 import UserProfilePage from "./pages/Login/profile";
-
+import SavedDietPlans from "./pages/Login/SavedDietPlans";
 
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/recipes" element={<Food />} />
         <Route path="/userPanel" element={<UserPanel />} />
         <Route path="/profile" element={<UserProfilePage />} />
-        
+        <Route path="/SavedDietPlans" element={<SavedDietPlans />} />
 
         
         

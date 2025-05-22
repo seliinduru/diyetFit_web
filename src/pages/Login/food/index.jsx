@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./food.css";
 
+
 // Sample data for recipes
 const recipes = [
   {
@@ -89,7 +90,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Atıştırmalık",
     time: "15dk",
-    image: "/images/badem-toplari.jpg",
+    image: "/images/badem-toplari.png",
     servings: "10 adet",
     ingredients: [
       "1 su bardağı kuru hurma",
@@ -114,7 +115,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Tatlı",
     time: "15dk",
-    image: "/images/avokado-mousse.jpg",
+    image: "/images/avokado-mousse.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet olgun avokado",
@@ -141,7 +142,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Pilav",
     time: "30dk",
-    image: "/images/sebzeli-bulgur.jpg",
+    image: "/images/sebzeli-bulgur.png",
     servings: "4 kişilik",
     ingredients: [
       "2 su bardağı bulgur",
@@ -168,7 +169,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Çorba",
     time: "35dk",
-    image: "/images/mercimek-corbasi.jpg",
+    image: "/images/mercimek-corbasi.png",
     servings: "6 kişilik",
     ingredients: [
       "1 su bardağı kırmızı mercimek",
@@ -198,7 +199,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Sebze Yemeği",
     time: "25dk",
-    image: "/images/nohutlu-ispanak.jpg",
+    image: "/images/nohutlu-ispanak.png",
     servings: "4 kişilik",
     ingredients: [
       "500g ıspanak",
@@ -227,7 +228,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Sütlü Tatlı",
     time: "15dk",
-    image: "/images/meyveli-parfait.jpg",
+    image: "/images/meyveli-parfait.png",
     servings: "2 kişilik",
     ingredients: [
       "2 su bardağı yoğurt",
@@ -255,7 +256,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Tavuk",
     time: "20dk",
-    image: "/images/tavuklu-wrap.jpg",
+    image: "/images/tavuklu-wrap.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet tam buğday lavaş",
@@ -285,7 +286,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Vejetaryen",
     time: "40dk",
-    image: "/images/falafel.jpg",
+    image: "/images/falafel.png",
     servings: "4 kişilik",
     ingredients: [
       "2 su bardağı haşlanmış nohut",
@@ -315,7 +316,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Yumurta",
     time: "15dk",
-    image: "/images/sebzeli-omlet.jpg",
+    image: "/images/sebzeli-omlet.png",
     servings: "2 kişilik",
     ingredients: [
       "4 adet yumurta",
@@ -344,7 +345,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Köfte",
     time: "45dk",
-    image: "/images/mercimekli-kofte.jpg",
+    image: "/images/mercimekli-kofte.png",
     servings: "6 kişilik",
     ingredients: [
       "1 su bardağı kırmızı mercimek",
@@ -376,7 +377,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Kurabiye",
     time: "25dk",
-    image: "/images/muzlu-kurabiye.jpg",
+    image: "/images/muzlu-kurabiye.png",
     servings: "12 adet",
     ingredients: [
       "2 adet olgun muz",
@@ -401,7 +402,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Meze",
     time: "15dk",
-    image: "/images/humus.jpg",
+    image: "/images/humus.png",
     servings: "4 kişilik",
     ingredients: [
       "1 kutu haşlanmış nohut",
@@ -431,7 +432,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Sebze Yemeği",
     time: "45dk",
-    image: "/images/sebzeli-turlu.jpg",
+    image: "/images/sebzeli-turlu.png",
     servings: "6 kişilik",
     ingredients: [
       "2 adet patates",
@@ -464,7 +465,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Et Yemeği",
     time: "30dk",
-    image: "/images/diyet-kofte.jpg",
+    image: "/images/diyet-kofte.png",
     servings: "4 kişilik",
     ingredients: [
       "400g yağsız kıyma",
@@ -490,7 +491,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Tavuk",
     time: "50dk",
-    image: "/images/sebzeli-tavuk.jpg",
+    image: "/images/sebzeli-tavuk.png",
     servings: "4 kişilik",
     ingredients: [
       "4 adet tavuk but",
@@ -521,7 +522,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Vejetaryen",
     time: "25dk",
-    image: "/images/kabak-spaghetti.jpg",
+    image: "/images/kabak-spaghetti.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet büyük kabak",
@@ -548,7 +549,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Çorba",
     time: "30dk",
-    image: "/images/brokoli-corbasi.jpg",
+    image: "/images/brokoli-corbasi.png",
     servings: "4 kişilik",
     ingredients: [
       "500g brokoli",
@@ -579,7 +580,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Tahıl",
     time: "35dk",
-    image: "/images/sebzeli-kinoa.jpg",
+    image: "/images/sebzeli-kinoa.png",
     servings: "4 kişilik",
     ingredients: [
       "1 su bardağı kinoa",
@@ -612,7 +613,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Diyet",
     time: "20dk",
-    image: "/images/karnabaharpilavi.jpg",
+    image: "/images/karnabaharpilavi.png",
     servings: "4 kişilik",
     ingredients: [
       "1 adet orta boy karnabahar",
@@ -639,7 +640,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Balık",
     time: "25dk",
-    image: "/images/izgara-levrek.jpg",
+    image: "/images/izgara-levrek.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet levrek (temizlenmiş)",
@@ -665,7 +666,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Tavuk",
     time: "40dk",
-    image: "/images/tavuk-sis.jpg",
+    image: "/images/tavuk-sis.png",
     servings: "4 kişilik",
     ingredients: [
       "500g tavuk göğsü (kuşbaşı)",
@@ -693,7 +694,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Baklagil",
     time: "40dk",
-    image: "/images/yesil-mercimek.jpg",
+    image: "/images/yesil-mercimek.png",
     servings: "4 kişilik",
     ingredients: [
       "1.5 su bardağı yeşil mercimek",
@@ -722,7 +723,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Asya Mutfağı",
     time: "20dk",
-    image: "/images/sebzeli-noodle.jpg",
+    image: "/images/sebzeli-noodle.png",
     servings: "2 kişilik",
     ingredients: [
       "200g tam buğday noodle",
@@ -753,7 +754,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Vejetaryen",
     time: "20dk",
-    image: "/images/mantar-sote.jpg",
+    image: "/images/mantar-sote.png",
     servings: "2 kişilik",
     ingredients: [
       "500g mantar",
@@ -780,7 +781,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Pilav",
     time: "30dk",
-    image: "/images/sebzeli-bulgur.jpg",
+    image: "/images/sebzeli-bulgur.png",
     servings: "4 kişilik",
     ingredients: [
       "2 su bardağı bulgur",
@@ -808,7 +809,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Sebze Yemeği",
     time: "40dk",
-    image: "/images/kabak-graten.jpg",
+    image: "/images/kabak-graten.png",
     servings: "4 kişilik",
     ingredients: [
       "3 adet kabak",
@@ -841,7 +842,7 @@ const recipes = [
     category: "Ana Yemek",
     subcategory: "Vejetaryen",
     time: "45dk",
-    image: "/images/mercimek-koftesi.jpg",
+    image: "/images/mercimek-koftesi.png",
     servings: "6 kişilik",
     ingredients: [
       "1 su bardağı kırmızı mercimek",
@@ -876,7 +877,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/yulaf-ezmesi-smoothie-bowl.jpg",
+    image: "/images/yulaf-ezmesi-smoothie-bowl.png",
     servings: "1 kişilik",
     ingredients: [
       "1/2 su bardağı yulaf ezmesi",
@@ -899,7 +900,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/avokado-tost.jpg",
+    image: "/images/avokado-tost.png",
     servings: "1 kişilik",
     ingredients: [
       "2 dilim tam tahıllı ekmek",
@@ -923,7 +924,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/yesil-detoks-smoothie.jpg",
+    image: "/images/yesil-detoks-smoothie.png",
     servings: "1 kişilik",
     ingredients: [
       "1 avuç ıspanak",
@@ -945,7 +946,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "25dk",
-    image: "/images/kinoa-kahvalti-kasesi.jpg",
+    image: "/images/kinoa-kahvalti-kasesi.png",
     servings: "2 kişilik",
     ingredients: [
       "1/2 su bardağı kinoa",
@@ -969,7 +970,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/yumurta-beyazli-omlet.jpg",
+    image: "/images/yumurta-beyazli-omlet.png",
     servings: "1 kişilik",
     ingredients: [
       "3 yumurta beyazı",
@@ -994,7 +995,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/yogurtlu-meyveli-granola.jpg",
+    image: "/images/yogurtlu-meyveli-granola.png",
     servings: "1 kişilik",
     ingredients: [
       "1 su bardağı yağsız yoğurt",
@@ -1016,7 +1017,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "20dk",
-    image: "/images/yesil-mercimekli-kahvalti-canagi.jpg",
+    image: "/images/yesil-mercimekli-kahvalti-canagi.png",
     servings: "2 kişilik",
     ingredients: [
       "1/2 su bardağı yeşil mercimek",
@@ -1041,7 +1042,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/protein-pancake.jpg",
+    image: "/images/protein-pancake.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet muz",
@@ -1064,7 +1065,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/lor-peynirli-tost.jpg",
+    image: "/images/lor-peynirli-tost.png",
     servings: "1 kişilik",
     ingredients: [
       "2 dilim çavdar ekmeği",
@@ -1088,7 +1089,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk + bekleme",
-    image: "/images/chia-tohumlu-puding.jpg",
+    image: "/images/chia-tohumlu-puding.png",
     servings: "1 kişilik",
     ingredients: [
       "2 yemek kaşığı chia tohumu",
@@ -1110,7 +1111,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/sebzeli-tofu-scramble.jpg",
+    image: "/images/sebzeli-tofu-scramble.png",
     servings: "2 kişilik",
     ingredients: [
       "200g sıkı tofu",
@@ -1138,7 +1139,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/muzlu-yulaf-lapasi.jpg",
+    image: "/images/muzlu-yulaf-lapasi.png",
     servings: "1 kişilik",
     ingredients: [
       "1/2 su bardağı yulaf ezmesi",
@@ -1161,7 +1162,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/yesil-cayli-smoothie.jpg",
+    image: "/images/yesil-cayli-smoothie.png",
     servings: "1 kişilik",
     ingredients: [
       "1 fincan demlenmiş ve soğutulmuş yeşil çay",
@@ -1183,7 +1184,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "20dk",
-    image: "/images/tam-tahilli-waffle.jpg",
+    image: "/images/tam-tahilli-waffle.png",
     servings: "2 kişilik",
     ingredients: [
       "1 su bardağı tam buğday unu",
@@ -1208,7 +1209,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/firinda-yumurtali-avokado.jpg",
+    image: "/images/firinda-yumurtali-avokado.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet avokado",
@@ -1232,7 +1233,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "25dk",
-    image: "/images/yulafli-elma-parcaciklari.jpg",
+    image: "/images/yulafli-elma-parcaciklari.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet elma",
@@ -1257,7 +1258,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "25dk",
-    image: "/images/ispanakli-yumurta-muffin.jpg",
+    image: "/images/ispanakli-yumurta-muffin.png",
     servings: "6 adet",
     ingredients: [
       "6 adet yumurta",
@@ -1282,7 +1283,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk + bekleme",
-    image: "/images/hindistan-cevizli-chia-puding.jpg",
+    image: "/images/hindistan-cevizli-chia-puding.png",
     servings: "2 kişilik",
     ingredients: [
       "4 yemek kaşığı chia tohumu",
@@ -1305,7 +1306,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "20dk",
-    image: "/images/karabugdayli-kahvalti-kasesi.jpg",
+    image: "/images/karabugdayli-kahvalti-kasesi.png",
     servings: "2 kişilik",
     ingredients: [
       "1/2 su bardağı karabuğday",
@@ -1330,7 +1331,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/sebzeli-tofu-wrap.jpg",
+    image: "/images/sebzeli-tofu-wrap.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet tam buğday lavaşı",
@@ -1356,7 +1357,7 @@ const recipes = [
     category: "Kahvaltı",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/meyveli-yogurt-parfesi.jpg",
+    image: "/images/meyveli-yogurt-parfesi.png",
     servings: "1 kişilik",
     ingredients: [
       "1 su bardağı yağsız yoğurt",
@@ -1382,7 +1383,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/badem-ezmeli-elma-dilimleri.jpg",
+    image: "/images/badem-ezmeli-elma-dilimleri.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet elma",
@@ -1402,7 +1403,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "15dk + bekleme",
-    image: "/images/proteinli-enerji-toplari.jpg",
+    image: "/images/proteinli-enerji-toplari.png",
     servings: "10 adet",
     ingredients: [
       "1 su bardağı yulaf ezmesi",
@@ -1425,7 +1426,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/humuslu-salatalik-cubuklari.jpg",
+    image: "/images/humuslu-salatalik-cubuklari.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet salatalık",
@@ -1447,7 +1448,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk + dondurma",
-    image: "/images/yogurtlu-meyveli-buz.jpg",
+    image: "/images/yogurtlu-meyveli-buz.png",
     servings: "4 adet",
     ingredients: [
       "1 su bardağı yağsız yoğurt",
@@ -1469,7 +1470,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/avokado-cikolatali-mousse.jpg",
+    image: "/images/avokado-cikolatali-mousse.png",
     servings: "2 kişilik",
     ingredients: [
       "1 adet olgun avokado",
@@ -1493,7 +1494,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "40dk",
-    image: "/images/baharatli-nohut-cerezi.jpg",
+    image: "/images/baharatli-nohut-cerezi.png",
     servings: "4 kişilik",
     ingredients: [
       "1 kutu haşlanmış nohut (400g)",
@@ -1517,7 +1518,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/yaban-mersinli-yogurt-kasesi.jpg",
+    image: "/images/yaban-mersinli-yogurt-kasesi.png",
     servings: "1 kişilik",
     ingredients: [
       "1 su bardağı yağsız yoğurt",
@@ -1539,7 +1540,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/yesil-smoothie-bowl.jpg",
+    image: "/images/yesil-smoothie-bowl.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet muz",
@@ -1560,7 +1561,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "5dk + bekleme",
-    image: "/images/badem-sutlu-chia-puding.jpg",
+    image: "/images/badem-sutlu-chia-puding.png",
     servings: "1 kişilik",
     ingredients: [
       "2 yemek kaşığı chia tohumu",
@@ -1582,7 +1583,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "30dk",
-    image: "/images/firinda-elma-dilimleri.jpg",
+    image: "/images/firinda-elma-dilimleri.png",
     servings: "2 kişilik",
     ingredients: ["2 adet elma", "1 çay kaşığı tarçın", "1 tatlı kaşığı bal"],
     steps: [
@@ -1599,7 +1600,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "20dk",
-    image: "/images/lor-peynirli-kabak-mucveri.jpg",
+    image: "/images/lor-peynirli-kabak-mucveri.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet orta boy kabak",
@@ -1623,7 +1624,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "25dk",
-    image: "/images/kinoa-salatasi.jpg",
+    image: "/images/kinoa-salatasi.png",
     servings: "2 kişilik",
     ingredients: [
       "1/2 su bardağı kinoa",
@@ -1651,7 +1652,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk + dondurma",
-    image: "/images/yogurtlu-meyveli-dondurma.jpg",
+    image: "/images/yogurtlu-meyveli-dondurma.png",
     servings: "4 kişilik",
     ingredients: [
       "2 su bardağı yağsız yoğurt",
@@ -1672,7 +1673,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/baharatli-edamame.jpg",
+    image: "/images/baharatli-edamame.png",
     servings: "2 kişilik",
     ingredients: [
       "200g edamame (soya fasulyesi)",
@@ -1694,7 +1695,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/tam-tahilli-kraker-humus.jpg",
+    image: "/images/tam-tahilli-kraker-humus.png",
     servings: "1 kişilik",
     ingredients: [
       "10 adet tam tahıllı kraker",
@@ -1715,7 +1716,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/yulaf-ezmeli-muz-sandvic.jpg",
+    image: "/images/yulaf-ezmeli-muz-sandvic.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet muz",
@@ -1736,7 +1737,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/sebzeli-tavuk-rulolari.jpg",
+    image: "/images/sebzeli-tavuk-rulolari.png",
     servings: "2 kişilik",
     ingredients: [
       "100g haşlanmış tavuk göğsü",
@@ -1761,7 +1762,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "5dk",
-    image: "/images/kefirli-meyve-smoothie.jpg",
+    image: "/images/kefirli-meyve-smoothie.png",
     servings: "1 kişilik",
     ingredients: [
       "1 su bardağı kefir",
@@ -1782,7 +1783,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "40dk",
-    image: "/images/mercimek-koftesi-diyet.jpg",
+    image: "/images/mercimek-koftesi-diyet.png",
     servings: "4 kişilik",
     ingredients: [
       "1 su bardağı kırmızı mercimek",
@@ -1809,7 +1810,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "10dk",
-    image: "/images/yogurtlu-salatalik-canagi.jpg",
+    image: "/images/yogurtlu-salatalik-canagi.png",
     servings: "1 kişilik",
     ingredients: [
       "1 adet salatalık",
@@ -1832,7 +1833,7 @@ const recipes = [
     category: "Ara Öğün",
     subcategory: "Diyet",
     time: "30dk",
-    image: "/images/firinda-tatli-patates-cipsler.jpg",
+    image: "/images/firinda-tatli-patates-cipsler.png",
     servings: "2 kişilik",
     ingredients: [
       "1 adet orta boy tatlı patates",
@@ -1855,7 +1856,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "15dk + soğutma",
-    image: "/images/cikolatali-avokado-puding.jpg",
+    image: "/images/cikolatali-avokado-puding.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet olgun avokado",
@@ -1879,7 +1880,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "10dk + dondurma",
-    image: "/images/muzlu-dondurma.jpg",
+    image: "/images/muzlu-dondurma.png",
     servings: "2 kişilik",
     ingredients: [
       "3 adet olgun muz (dondurulmuş)",
@@ -1900,7 +1901,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "10dk + bekleme",
-    image: "/images/chia-tohumlu-puding-tatli.jpg",
+    image: "/images/chia-tohumlu-puding-tatli.png",
     servings: "2 kişilik",
     ingredients: [
       "4 yemek kaşığı chia tohumu",
@@ -1922,7 +1923,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "25dk",
-    image: "/images/elmali-tarcinli-yulaf-kurabiyesi.jpg",
+    image: "/images/elmali-tarcinli-yulaf-kurabiyesi.png",
     servings: "12 adet",
     ingredients: [
       "2 su bardağı yulaf ezmesi",
@@ -1944,7 +1945,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "15dk + soğutma",
-    image: "/images/hindistan-cevizli-enerji-toplari.jpg",
+    image: "/images/hindistan-cevizli-enerji-toplari.png",
     servings: "15 adet",
     ingredients: [
       "1 su bardağı kuru hurma",
@@ -1968,7 +1969,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "10dk + dondurma",
-    image: "/images/yogurtlu-dondurulmus-uzum.jpg",
+    image: "/images/yogurtlu-dondurulmus-uzum.png",
     servings: "2 kişilik",
     ingredients: [
       "2 su bardağı üzüm",
@@ -1989,7 +1990,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "30dk",
-    image: "/images/firinda-elma-tatlisi.jpg",
+    image: "/images/firinda-elma-tatlisi.png",
     servings: "4 kişilik",
     ingredients: [
       "4 adet elma",
@@ -2013,7 +2014,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "15dk",
-    image: "/images/cilekli-yogurt-parfesi.jpg",
+    image: "/images/cilekli-yogurt-parfesi.png",
     servings: "2 kişilik",
     ingredients: [
       "2 su bardağı yağsız yoğurt",
@@ -2037,7 +2038,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "35dk",
-    image: "/images/muzlu-yulaf-keki.jpg",
+    image: "/images/muzlu-yulaf-keki.png",
     servings: "8 dilim",
     ingredients: [
       "2 adet olgun muz",
@@ -2064,7 +2065,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "10dk + bekleme",
-    image: "/images/kayisili-chia-puding.jpg",
+    image: "/images/kayisili-chia-puding.png",
     servings: "2 kişilik",
     ingredients: [
       "4 yemek kaşığı chia tohumu",
@@ -2086,7 +2087,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "15dk + dondurma",
-    image: "/images/yaban-mersinli-dondurma.jpg",
+    image: "/images/yaban-mersinli-dondurma.png",
     servings: "4 kişilik",
     ingredients: [
       "2 su bardağı dondurulmuş yaban mersini",
@@ -2107,7 +2108,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "10dk + dondurma",
-    image: "/images/hindistan-cevizli-muz-dilimleri.jpg",
+    image: "/images/hindistan-cevizli-muz-dilimleri.png",
     servings: "2 kişilik",
     ingredients: [
       "2 adet muz",
@@ -2128,7 +2129,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "20dk + soğutma",
-    image: "/images/cikolatali-meyve-sisleri.jpg",
+    image: "/images/cikolatali-meyve-sisleri.png",
     servings: "4 kişilik",
     ingredients: [
       "100g bitter çikolata (%70 kakao)",
@@ -2153,7 +2154,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "25dk",
-    image: "/images/badem-unlu-kurabiye.jpg",
+    image: "/images/badem-unlu-kurabiye.png",
     servings: "12 adet",
     ingredients: [
       "2 su bardağı badem unu",
@@ -2176,7 +2177,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "15dk + soğutma",
-    image: "/images/vegan-cikolata-mousse.jpg",
+    image: "/images/vegan-cikolata-mousse.png",
     servings: "4 kişilik",
     ingredients: [
       "1 kutu silken tofu (300g)",
@@ -2199,7 +2200,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "40dk",
-    image: "/images/sekersiz-elmali-crumble.jpg",
+    image: "/images/sekersiz-elmali-crumble.png",
     servings: "4 kişilik",
     ingredients: [
       "4 adet elma",
@@ -2224,7 +2225,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "40dk + soğutma",
-    image: "/images/hindistan-cevizli-pirinc-sutlaci.jpg",
+    image: "/images/hindistan-cevizli-pirinc-sutlaci.png",
     servings: "4 kişilik",
     ingredients: [
       "1/2 su bardağı pirinç",
@@ -2251,7 +2252,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "30dk",
-    image: "/images/yulaf-unlu-muffin.jpg",
+    image: "/images/yulaf-unlu-muffin.png",
     servings: "12 adet",
     ingredients: [
       "2 su bardağı yulaf unu",
@@ -2279,7 +2280,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "20dk + soğutma",
-    image: "/images/hurmali-enerji-barlari.jpg",
+    image: "/images/hurmali-enerji-barlari.png",
     servings: "12 adet",
     ingredients: [
       "1 su bardağı kuru hurma",
@@ -2303,7 +2304,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "10dk + bekleme",
-    image: "/images/portakalli-chia-puding.jpg",
+    image: "/images/portakalli-chia-puding.png",
     servings: "2 kişilik",
     ingredients: [
       "4 yemek kaşığı chia tohumu",
@@ -2326,7 +2327,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "35dk",
-    image: "/images/firinda-armut-tatlisi.jpg",
+    image: "/images/firinda-armut-tatlisi.png",
     servings: "4 kişilik",
     ingredients: [
       "4 adet armut",
@@ -2350,7 +2351,7 @@ const recipes = [
     category: "Tatlı",
     subcategory: "Diyet",
     time: "15dk + dondurma",
-    image: "/images/cilekli-dondurulmus-yogurt.jpg",
+    image: "/images/cilekli-dondurulmus-yogurt.png",
     servings: "4 kişilik",
     ingredients: [
       "2 su bardağı dondurulmuş çilek",
@@ -2372,10 +2373,10 @@ const recipes = [
 
 // Categories with their icons
 const categories = [
-  { id: 1, name: "Ana Yemek", icon: "/images/ana-yemek-icon.png" },
-  { id: 2, name: "Ara Öğün", icon: "/images/ara-ogun-icon.png" },
-  { id: 3, name: "Kahvaltı", icon: "/images/kahvalti-icon.png" },
-  { id: 4, name: "Tatlı", icon: "/images/tatli-icon.png" },
+  { id: 1, name: "Ana Yemek", iconSrc: "/images/ana-yemek-icon.png" },
+  { id: 2, name: "Ara Öğün", iconSrc: "/images/ara-ogun-icon.png" },
+  { id: 3, name: "Kahvaltı", iconSrc: "/images/kahvalti-icon.png" },
+  { id: 4, name: "Tatlı", iconSrc: "/images/tatli-icon.png" },
 ];
 
 // Generate more recipes for each category (20 per category)
@@ -2552,19 +2553,24 @@ function Food() {
       {currentView === "home" && (
         <>
           <div className="categories">
-            {categories.map((category) => (
-              <div
-                key={category.id}
-                className="category-item"
-                onClick={() => handleCategoryClick(category.name)}
-              >
-                <div className="category-icon">
-                  <div className="icon-placeholder"></div>
-                </div>
-                <p>{category.name}</p>
-              </div>
-            ))}
-          </div>
+  {categories.map((category) => (
+    <div
+      key={category.id}
+      className="category-item"
+      onClick={() => handleCategoryClick(category.name)}
+    >
+      <div className="category-icon">
+        <img 
+          src={category.iconSrc} 
+          alt={category.name} 
+          className="category-image" 
+        />
+      </div>
+      <p>{category.name}</p>
+    </div>
+  ))}
+</div>
+
 
           {searchTerm && (
             <section className="search-results">

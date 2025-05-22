@@ -9,7 +9,7 @@ const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [user, setUser] = useState(null);
-  const [showLoginAlert, setShowLoginAlert] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   // Check if user is logged in
   useEffect(() => {
@@ -93,14 +93,11 @@ const Home = () => {
   };
 
   const handleCreateDiet = () => {
-    if (user) {
-      navigate("/create_diet");
+    console.log("Current user state:", user);
+    if (!user) {
+      setShowLoginModal(true);
     } else {
-      setShowLoginAlert(true);
-      // Hide the alert after 3 seconds
-      setTimeout(() => {
-        setShowLoginAlert(false);
-      }, 3000);
+      navigate("/create_diet");
     }
   };
 
@@ -199,10 +196,7 @@ const Home = () => {
             <nav>
               <ul style={styles.navLinks}>
                 <li>
-                  <button
-                    onClick={handleCreateDiet}
-                    style={styles.navButton}
-                  >
+                  <button onClick={handleCreateDiet} style={styles.navButton}>
                     <span style={styles.navIcon}>📋</span> Diyet Oluştur
                   </button>
                 </li>
@@ -236,22 +230,6 @@ const Home = () => {
         </div>
       </header>
       <div style={styles.contentContainer}>
-        {/* Login Alert */}
-        {showLoginAlert && (
-          <div style={styles.loginAlert}>
-            <div style={styles.alertContent}>
-              <span style={styles.alertIcon}>⚠️</span>
-              <p style={styles.alertText}>Lütfen giriş yapınız</p>
-              <button 
-                style={styles.alertButton}
-                onClick={() => setShowLoginAlert(false)}
-              >
-                ✕
-              </button>
-            </div>
-          </div>
-        )}
-        
         {/* YUVARLAK BUTONLAR */}
         <section style={styles.circleSection}>
           {Object.keys(circleData).map((title) => (
@@ -415,7 +393,7 @@ const Home = () => {
                 inceleyin.
               </p>
             </div>
-                        <div style={styles.step}>
+            <div style={styles.step}>
               <div style={styles.stepNumber}>4</div>
               <div style={styles.stepIcon}>📅</div>
               <h3 style={styles.stepTitle}>Diyet Planınızı Takip Edin</h3>
@@ -571,6 +549,58 @@ const Home = () => {
             </div>
           </div>
         </footer>
+        {/* Login Modal */}
+        {showLoginModal && (
+          <div style={styles.loginModalOverlay}>
+            <div
+              style={{
+                ...styles.loginModalCard,
+                ...(isMobile ? styles.loginModalCardMobile : {}),
+              }}
+            >
+              <button
+                style={styles.loginModalCloseButton}
+                onClick={() => setShowLoginModal(false)}
+              >
+                ✕
+              </button>
+              <h3 style={styles.loginModalTitle}>Lütfen önce giriş yapınız.</h3>
+              <p style={styles.loginModalText}>Hesabınız yoksa kayıt olunuz.</p>
+              <div
+                style={{
+                  ...styles.loginModalButtons,
+                  flexDirection: isMobile ? "column" : "row",
+                  gap: isMobile ? "12px" : "18px",
+                }}
+              >
+                <button
+                  style={{
+                    ...styles.loginModalButton,
+                    ...styles.loginModalButtonPrimary,
+                  }}
+                  onClick={() => {
+                    setShowLoginModal(false);
+                    navigate("/login");
+                  }}
+                >
+                  Giriş Yap
+                </button>
+                <button
+                  style={{
+                    ...styles.loginModalButton,
+                    ...styles.loginModalButtonSecondary,
+                  }}
+                  onClick={() => {
+                    setShowLoginModal(false);
+                    navigate("/register");
+                  }}
+                >
+                  Kayıt Ol
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       {/* CSS for hover effects */}
       <style>
@@ -844,7 +874,7 @@ const styles = {
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     display: "flex",
     justifyContent: "center",
-        alignItems: "center",
+    alignItems: "center",
     zIndex: 1000,
     backdropFilter: "blur(5px)",
   },
@@ -1164,8 +1194,95 @@ const styles = {
     fontSize: "14px",
     transition: "color 0.3s",
   },
+  loginModalOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    zIndex: 3000,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backdropFilter: "blur(2px)",
+  },
+  loginModalCard: {
+    background: "#fff",
+    borderRadius: "16px",
+    boxShadow: "0 8px 32px rgba(56, 142, 60, 0.18)",
+    padding: "36px 32px",
+    width: "400px",
+    height: "auto",
+    maxWidth: "95vw",
+    maxHeight: "90vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    border: "2px solid #388E3C",
+    position: "relative",
+  },
+  loginModalCardMobile: {
+    width: "90vw",
+    padding: "24px 10px",
+  },
+  loginModalTitle: {
+    color: "#388E3C",
+    fontSize: "22px",
+    fontWeight: 700,
+    marginBottom: "10px",
+    textAlign: "center",
+  },
+  loginModalText: {
+    color: "#333",
+    fontSize: "16px",
+    marginBottom: "28px",
+    textAlign: "center",
+  },
+  loginModalButtons: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loginModalButton: {
+    fontSize: "16px",
+    fontWeight: 600,
+    borderRadius: "6px",
+    padding: "10px 22px",
+    border: "none",
+    cursor: "pointer",
+    transition: "background 0.2s, color 0.2s",
+    margin: 0,
+    minWidth: "110px",
+  },
+  loginModalButtonPrimary: {
+    background: "#388E3C",
+    color: "#fff",
+    border: "2px solid #388E3C",
+  },
+  loginModalButtonSecondary: {
+    background: "#fff",
+    color: "#388E3C",
+    border: "2px solid #388E3C",
+  },
+  loginModalButtonTertiary: {
+    background: "#f5f5f5",
+    color: "#388E3C",
+    border: "1px solid #bdbdbd",
+  },
+  loginModalCloseButton: {
+    position: "absolute",
+    top: "15px",
+    right: "15px",
+    background: "none",
+    border: "none",
+    fontSize: "24px",
+    color: "#ff0000",
+    cursor: "pointer",
+    padding: "0",
+    zIndex: 3001,
+  },
 };
 
 export default Home;
-
-

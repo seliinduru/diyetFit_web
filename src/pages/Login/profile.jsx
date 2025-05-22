@@ -72,28 +72,41 @@ const UserProfilePage = () => {
   // Helper function to determine icon based on question content
   const getIconForQuestion = (question) => {
     const questionLower = question.toLowerCase();
-    
-    if (questionLower.includes('diyet amacı') || questionLower.includes('hedef'))
-      return '🎯';
-    if (questionLower.includes('kilo') || questionLower.includes('ağırlık'))
-      return '⚖️';
-    if (questionLower.includes('boy') || questionLower.includes('uzunluk'))
-      return '📏';
-    if (questionLower.includes('yaş'))
-      return '🗓️';
-    if (questionLower.includes('aktivite') || questionLower.includes('egzersiz'))
-      return '🏃‍♂️';
-    if (questionLower.includes('cinsiyet'))
-      return '👤';
-    if (questionLower.includes('alerji') || questionLower.includes('hassasiyet'))
-      return '⚠️';
-    if (questionLower.includes('tercih') || questionLower.includes('sevdiğiniz'))
-      return '❤️';
-    if (questionLower.includes('sevmediğiniz') || questionLower.includes('istemediğiniz'))
-      return '👎';
-    
+
+    if (
+      questionLower.includes("diyet amacı") ||
+      questionLower.includes("hedef")
+    )
+      return "🎯";
+    if (questionLower.includes("kilo") || questionLower.includes("ağırlık"))
+      return "⚖️";
+    if (questionLower.includes("boy") || questionLower.includes("uzunluk"))
+      return "📏";
+    if (questionLower.includes("yaş")) return "🗓️";
+    if (
+      questionLower.includes("aktivite") ||
+      questionLower.includes("egzersiz")
+    )
+      return "🏃‍♂️";
+    if (questionLower.includes("cinsiyet")) return "👤";
+    if (
+      questionLower.includes("alerji") ||
+      questionLower.includes("hassasiyet")
+    )
+      return "⚠️";
+    if (
+      questionLower.includes("tercih") ||
+      questionLower.includes("sevdiğiniz")
+    )
+      return "❤️";
+    if (
+      questionLower.includes("sevmediğiniz") ||
+      questionLower.includes("istemediğiniz")
+    )
+      return "👎";
+
     // Default icon
-    return '📝';
+    return "📝";
   };
 
   const toggleDarkMode = () => {
@@ -209,7 +222,7 @@ const UserProfilePage = () => {
             </button>
           </div>
         </div>
-        
+
         {/* Diyet Planı Bölümü - YENİ TASARIM */}
         <div className="profile-diet-section">
           <h2 className="profile-section-title">Kişisel Bilgileriniz</h2>
@@ -231,9 +244,10 @@ const UserProfilePage = () => {
               <div className="profile-action-container">
                 <button
                   className="profile-action-button profile-view-diet"
-                  onClick={handleViewDiet}
+                  onClick={() => navigate("/SavedDietPlans")}
                 >
-                  <span className="profile-button-icon">👁️</span> Diyet Planını Görüntüle
+                  <span className="profile-button-icon">👁️</span> Diyet Planını
+                  Görüntüle
                 </button>
               </div>
             </>
@@ -247,12 +261,13 @@ const UserProfilePage = () => {
                 className="profile-action-button profile-create-diet"
                 onClick={handleCreateDiet}
               >
-                <span className="profile-button-icon">➕</span> Diyet Planı Oluştur
+                <span className="profile-button-icon">➕</span> Diyet Planı
+                Oluştur
               </button>
             </div>
           )}
         </div>
-        
+
         {/* Hızlı Erişim Kartları */}
         <div className="profile-quick-access">
           <h2 className="profile-section-title">Hızlı Erişim</h2>

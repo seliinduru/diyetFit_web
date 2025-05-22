@@ -1,0 +1,596 @@
+/* Genel Konteyner */
+.saved-plans-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000; /* Yazılar siyah olarak değiştirildi */
+  background-color: #ffffff;
+}
+
+/* Üst Başlık */
+.saved-plans-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #c8e6c9;
+}
+
+.saved-plans-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.saved-plans-header h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #4caf50;
+  border-radius: 3px;
+}
+
+/* Yeni Diyet Planı Oluştur Butonu */
+.create-new-plan-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.create-new-plan-button:hover {
+  background-color: #388e3c;
+}
+
+.back-button {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background-color: #c8e6c9;
+}
+
+/* Arama Kutusu Stilleri */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #2e7d32;
+  font-size: 16px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 35px;
+  border: 1px solid #c8e6c9;
+    border-radius: 6px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.search-input::placeholder {
+  color: #7d9d7d;
+}
+
+.clear-search {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #7d9d7d;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.clear-search:hover {
+  color: #2e7d32;
+}
+
+/* Yükleniyor */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #4caf50;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hata Mesajı */
+.error-message {
+  background-color: #f8fff8;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: 30px auto;
+  max-width: 500px;
+}
+
+.error-message h3 {
+  color: #d32f2f;
+  margin-top: 0;
+}
+
+.retry-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.retry-button:hover {
+  background-color: #388e3c;
+}
+
+/* Plan Yok Mesajı */
+.no-plans-message {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #e8f5e9;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.empty-icon {
+  font-size: 60px;
+  color: #81c784;
+  margin-bottom: 20px;
+}
+
+.no-plans-message h2 {
+  font-size: 22px;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+  margin-bottom: 10px;
+}
+
+.no-plans-message p {
+  color: #000; /* Yazı siyah olarak değiştirildi */
+  margin-bottom: 25px;
+}
+
+.create-plan-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-plan-button:hover {
+  background-color: #388e3c;
+}
+
+/* Plan Listesi ve Detayları Layout */
+.plans-layout {
+  display: flex;
+  gap: 30px;
+}
+
+.plans-list {
+  flex: 1;
+  min-width: 300px;
+}
+
+.plan-details {
+  flex: 2;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1);
+  padding: 25px;
+  position: relative;
+  border: 1px solid #e8f5e9;
+}
+
+/* Plan Listesi */
+.plans-list h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.plan-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e8f5e9;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.plan-card.selected {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+.plan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.plan-card-header h3 {
+  font-size: 16px;
+  margin: 0;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+}
+
+.plan-date {
+  font-size: 12px;
+  color: #000; /* Yazı siyah olarak değiştirildi */
+}
+
+.plan-card-preview {
+  font-size: 14px;
+  color: #000; /* Yazı siyah olarak değiştirildi */
+  margin-bottom: 15px;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.plan-card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.view-button, .delete-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.view-button {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.view-button:hover {
+  background-color: #c8e6c9;
+}
+
+.delete-button {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.delete-button:hover {
+  background-color: #ffcdd2;
+}
+
+/* Plan Detayları */
+.plan-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e8f5e9;
+}
+
+.plan-details-header h2 {
+  font-size: 22px;
+  margin: 0;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+}
+
+.plan-details-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.print-button, .close-button {
+  background-color: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  color: #2e7d32;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.print-button:hover, .close-button:hover {
+  background-color: #c8e6c9;
+}
+
+.plan-details-date {
+  font-size: 14px;
+  color: #000; /* Yazı siyah olarak değiştirildi */
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plan-details-content {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000; /* Yazı siyah olarak değiştirildi */
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.plan-details-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.plan-details-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.plan-details-content::-webkit-scrollbar-thumb {
+  background: #a5d6a7;
+  border-radius: 10px;
+}
+
+.plan-details-content::-webkit-scrollbar-thumb:hover {
+  background: #81c784;
+}
+
+/* Plan Seçilmediğinde */
+.no-plan-selected {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f8e9;
+  border-radius: 8px;
+  border: 1px dashed #a5d6a7;
+  min-height: 400px;
+}
+
+.no-plan-message {
+  text-align: center;
+  color: #000; /* Yazı siyah olarak değiştirildi */
+}
+
+.no-plan-message i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #81c784;
+}
+
+.no-plan-message h3 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+}
+
+/* Silme Onay Modalı */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirm-modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-top: 4px solid #4caf50;
+}
+
+.confirm-modal h3 {
+  margin-top: 0;
+  color: #2e7d32; /* Başlık yeşil kaldı */
+}
+
+.confirm-modal p {
+  color: #000; /* Yazı siyah olarak değiştirildi */
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cancel-button, .confirm-button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel-button {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.cancel-button:hover {
+  background-color: #c8e6c9;
+}
+
+.confirm-button {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #b71c1c;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 992px) {
+  .plans-layout {
+    flex-direction: column;
+  }
+  
+  .plan-details, .no-plan-selected {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .saved-plans-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .saved-plans-header h1 {
+    font-size: 26px;
+  }
+  
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .plan-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .plan-details-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .search-input {
+    padding: 10px 35px 10px 30px;
+    font-size: 13px;
+  }
+  
+  .search-icon {
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .plan-card-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .view-button, .delete-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+  }
+  
+  .cancel-button, .confirm-button {
+    width: 100%;
+  }
+  
+  .saved-plans-container {
+    padding: 15px;
+  }
+  
+  .create-new-plan-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

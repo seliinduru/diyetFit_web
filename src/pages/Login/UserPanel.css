@@ -729,3 +729,22 @@
   animation: pulse 1.5s infinite;
   outline: none;
 }
+/* UserPanel.css dosyasına ekleyin */
+
+/* Voice Notes Integration */
+.voice-notes-wrapper {
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Todo List with Voice Notes */
+.todo-item.voice-note-item {
+  background-color: #e3f2fd;
+  border-left: 4px solid #2196F3;
+}
+
+.todo-icon {
+  margin-right: 8px;
+  color: #2196F3;
+}
+

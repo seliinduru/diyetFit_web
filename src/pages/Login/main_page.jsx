@@ -9,6 +9,7 @@ const MainPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showTips, setShowTips] = useState(false);
   const [activeTip, setActiveTip] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Diet tips for the new section
   const dietTips = [
@@ -136,7 +137,8 @@ const MainPage = () => {
             alt="DiyetFit Logo"
             style={styles.logo}
           />
-          <nav>
+          {/* Masaüstü için nav */}
+          <nav className="desktop-nav">
             <ul style={styles.navLinks}>
               <li>
                 <button
@@ -172,6 +174,14 @@ const MainPage = () => {
               </li>
               <li>
                 <button
+                  onClick={() => navigate("/SavedDietPlans")}
+                  style={styles.navButton}
+                >
+                  <span style={styles.navIcon}>📝</span> Diyet Planını Görüntüle
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => navigate("/profile")}
                   style={styles.navButton}
                 >
@@ -180,16 +190,125 @@ const MainPage = () => {
               </li>
             </ul>
           </nav>
+          {/* Mobil için hamburger butonu */}
+          <button
+            className="mobile-menu-button"
+            style={{
+              background: "none",
+              border: "none",
+              fontSize: 28,
+              color: "#388E3C",
+              display: "none",
+              cursor: "pointer",
+              zIndex: 1100,
+            }}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label="Menüyü Aç/Kapat"
+          >
+            <span role="img" aria-label="menu">
+              ☰
+            </span>
+          </button>
+          {/* Mobil açılır menü */}
+          {isMobileMenuOpen && (
+            <div
+              className="mobile-menu-overlay"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <div className="mobile-menu" onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="mobile-menu-close"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    fontSize: 28,
+                    color: "#388E3C",
+                    position: "absolute",
+                    top: 16,
+                    right: 16,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Menüyü Kapat"
+                >
+                  ✕
+                </button>
+                <ul className="mobile-menu-list">
+                  <li>
+                    <button
+                      onClick={() => {
+                        navigate("/create_diet");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="mobile-menu-link"
+                    >
+                      <span style={styles.navIcon}>📋</span> Diyet Oluştur
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        navigate("/recipes");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="mobile-menu-link"
+                    >
+                      <span style={styles.navIcon}>🍲</span> Yemek Tarifleri
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        navigate("/kac_kalori");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="mobile-menu-link"
+                    >
+                      <span style={styles.navIcon}>🔢</span> Kaç Kalori
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        navigate("/vki");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="mobile-menu-link"
+                    >
+                      <span style={styles.navIcon}>📊</span> BKİ Hesapla
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        navigate("/SavedDietPlans");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="mobile-menu-link"
+                    >
+                      <span style={styles.navIcon}>📝</span> Diyet Planını
+                      Görüntüle
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        navigate("/profile");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="mobile-menu-link"
+                    >
+                      <span style={styles.navIcon}>👤</span> Profilim
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
       <div style={styles.contentContainer}>
-        {/* Date Widget */}
-        <div style={styles.dateWidget} className="date-widget">
-          <div style={styles.dateIcon}>📅</div>
-          <div style={styles.dateText}>{formatDate(currentDate)}</div>
-        </div>
-
         {/* YUVARLAK BUTONLAR */}
         <section style={styles.circleSection}>
           {Object.keys(circleData).map((title, index) => (
@@ -204,6 +323,11 @@ const MainPage = () => {
             </div>
           ))}
         </section>
+        {/* Date Widget */}
+        <div style={styles.dateWidget} className="date-widget">
+          <div style={styles.dateIcon}>📅</div>
+          <div style={styles.dateText}>{formatDate(currentDate)}</div>
+        </div>
 
         {/* Modal Overlay */}
         {activeCircle && (
@@ -991,6 +1115,84 @@ const MainPage = () => {
     ${styles.footerLegalLink}:hover {
       color: #4CAF50;
     }
+    /* Hamburger ve mobil menü stilleri */
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none !important;
+      }
+      .mobile-menu-button {
+        display: block !important;
+      }
+    }
+    @media (min-width: 901px) {
+      .mobile-menu-button {
+        display: none !important;
+      }
+      .mobile-menu-overlay {
+        display: none !important;
+      }
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      display: flex;
+      justify-content: flex-end;
+      animation: fadeIn 0.2s;
+    }
+    .mobile-menu {
+      background: #fff;
+      width: 80vw;
+      max-width: 320px;
+      height: 100vh;
+      box-shadow: -2px 0 12px rgba(0,0,0,0.15);
+      position: relative;
+      padding: 40px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      animation: slideInRight 0.2s;
+    }
+    .mobile-menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .mobile-menu-link {
+      background: none;
+      border: none;
+      color: #388E3C;
+      font-size: 18px;
+      text-align: left;
+      padding: 10px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .mobile-menu-link:active,
+    .mobile-menu-link:hover {
+      color: #2E7D32;
+    }
+    .mobile-menu-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #388E3C;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      cursor: pointer;
+    }
   `}
       </style>
     </div>
@@ -1065,27 +1267,45 @@ const styles = {
     fontSize: "18px",
   },
   // Date widget styles
+  // Date widget styles
+  // Date widget styles
   dateWidget: {
-    position: "fixed",
-    top: "200px",
-    right: "20px",
+    position: "relative",
+    margin: "0px auto 20px auto", // Üstten ve alttan daha fazla boşluk
     backgroundColor: "#4CAF50",
     color: "white",
-    padding: "10px 15px",
+    padding: "8px 12px", // Boyutu küçültmek için padding'i azalttım
     borderRadius: "8px",
     display: "flex",
     alignItems: "center",
     boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
     zIndex: 100,
+    maxWidth: "fit-content", // İçeriğine göre genişlik alacak
+    fontSize: "14px", // Yazı boyutunu küçülttüm
+    background: "linear-gradient(to right, #4CAF50, #388E3C)", // Daha güzel bir gradient arka plan
   },
+
+  // Arka plan için bir container ekleyin
+  dateWidgetContainer: {
+    backgroundColor: "#d3d3d3", // Açık gri arka plan
+    padding: "30px 0", // Üstten ve alttan padding
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+  },
+
+  // Tarih ikonu için daha küçük boyut
   dateIcon: {
-    fontSize: "24px",
-    marginRight: "10px",
+    fontSize: "20px", // Önceki 24px yerine daha küçük
+    marginRight: "8px", // Önceki 10px yerine daha küçük
   },
+
+  // Tarih metni için daha küçük boyut
   dateText: {
-    fontSize: "14px",
+    fontSize: "13px", // Önceki 14px yerine daha küçük
     fontWeight: "500",
   },
+
   circleSection: {
     display: "flex",
     justifyContent: "center",

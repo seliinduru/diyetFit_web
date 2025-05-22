@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { generateDietPlan } from '../services/dietService';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../Config/FirebaseConfig';
 import '../styles/dietPlan.css';
 import { useNavigate } from 'react-router-dom';
 
-/**
- * Diyet planı oluşturan ve gösteren bileşen
- * @param {Array} userAnswers - Kullanıcının anket cevapları
- * @param {string} userId - Kullanıcı ID'si
- * @returns {JSX.Element} - Diyet planı bileşeni
+/** 
+ * Diyet planı oluşturan ve gösteren bileşen 
+ * @param {Array} userAnswers - Kullanıcının anket cevapları 
+ * @param {string} userId - Kullanıcı ID'si 
+ * @returns {JSX.Element} - Diyet planı bileşeni 
  */
 const DietPlanGenerator = ({ userAnswers, userId }) => {
   const [dietPlan, setDietPlan] = useState('');
@@ -52,18 +52,26 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
   const handleSave = async () => {
     try {
       if (userId && dietPlan) {
-        const userDocRef = doc(db, "users", userId);
-        await updateDoc(userDocRef, {
-          dietPlan: dietPlan,
-          generatedAt: new Date()
+        // Yeni yapıya göre: dietPlans/[userUID]/plans koleksiyonuna kaydet
+        const plansCollectionRef = collection(db, "dietPlans", userId, "plans");
+        
+        // Yeni bir plan dokümanı oluştur
+        await addDoc(plansCollectionRef, {
+          planContent: dietPlan,
+          createdAt: serverTimestamp(),
+          userAnswers: userAnswers // Kullanıcı cevaplarını da kaydedebilirsiniz
         });
+
         setShowSaveSuccess(true);
         setTimeout(() => {
           setShowSaveSuccess(false);
+          // İsteğe bağlı: Başarılı kayıttan sonra anasayfaya yönlendir
+          // navigate('/dashboard');
         }, 3000);
       }
     } catch (err) {
       setError("Diyet planı kaydedilirken bir hata oluştu: " + err.message);
+      console.error("Kaydetme hatası:", err);
     }
   };
 
@@ -95,7 +103,9 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
     return { question, answerText };
   };
 
+  // JSX kısmı değişmedi
   return (
+    // Mevcut JSX kodunuz...
     <div className="diet-plan-page">
       {/* Üst köşede yazdır butonu */}
       {dietPlan && (
@@ -106,7 +116,6 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
           <i className="fas fa-print"></i> Yazdır
         </button>
       )}
-
       <div className="diet-plan-layout">
         {/* Sol panel - Kişisel bilgiler */}
         <div className="user-info-panel">
@@ -127,7 +136,6 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
             <p>Kişisel bilgiler bulunamadı.</p>
           )}
         </div>
-
         {/* Sağ panel - Diyet planı */}
         <div className="diet-plan-panel">
           {!dietPlan && !loading && (
@@ -135,7 +143,7 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
               <h2>Kişiselleştirilmiş Diyet Planı</h2>
               <p>
                 Verdiğiniz bilgilere göre size özel bir diyet planı oluşturmak için aşağıdaki butona tıklayın.
-                Bu plan, günlük kalori ihtiyacınızı, makro besin dağılımınızı ve 7 günlük yemek önerilerini içerecektir.
+                Bu plan, günlük kalori ihtiyacınızı, makro besin dağılımınızı ve günlük yemek önerilerini içerecektir.
               </p>
               
               <button 
@@ -172,7 +180,7 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
           {dietPlan && (
             <div className="diet-plan">
               <div className="diet-plan-header">
-                <h2>Kişiselleştirilmiş 7 Günlük Diyet Planınız</h2>
+                <h2>Kişiselleştirilmiş Günlük Diyet Planınız</h2>
               </div>
               
               <div className="plan-content">
@@ -189,7 +197,6 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
           )}
         </div>
       </div>
-
       {/* Alt kısım - Butonlar */}
       {dietPlan && (
         <div className="action-buttons">
@@ -207,7 +214,6 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
           </button>
         </div>
       )}
-
       {/* Çıkış onay modalı */}
       {showConfirmModal && (
         <div className="modal-overlay">
@@ -225,7 +231,6 @@ const DietPlanGenerator = ({ userAnswers, userId }) => {
           </div>
         </div>
       )}
-
       {/* Başarılı kaydetme bildirimi */}
       {showSaveSuccess && (
         <div className="success-notification">
